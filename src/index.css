@@ -1,0 +1,118 @@
+@font-face {
+  font-family: "GOBOLD EXTRACT";
+  src: url("/fonts/gobold/Gobold/Gobold_Extra1.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Typographies JAWA – à remplacer par les vraies fontes auto-hébergées */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body bg-jawaWhite text-jawaBlack antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-wide;
+  }
+}
+
+@layer components {
+  .container-wide {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full border border-primary px-6 py-3 text-sm font-medium text-primary bg-white transition hover:bg-primary hover:text-white hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  .section-padding {
+    @apply py-20 sm:py-24 lg:py-28;
+  }
+
+  .section-title {
+    @apply text-[2.4rem] sm:text-[3rem] lg:text-[3.4rem] font-display text-jawaBlack mb-3 tracking-tight;
+  }
+
+  .section-subtitle {
+    @apply max-w-2xl text-sm sm:text-[0.95rem] text-neutral-600;
+  }
+
+  .service-card {
+    @apply relative overflow-hidden rounded-[2.2rem] p-8 text-white shadow-soft transition-transform duration-500;
+  }
+
+  .service-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.18;
+    background-image: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.8), transparent 55%),
+      radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.3), transparent 55%);
+    pointer-events: none;
+  }
+
+  .service-card:hover {
+    transform: translateY(-10px) scale(1.01);
+  }
+
+  .paper-abstract {
+    background:
+      radial-gradient(circle at 0 0, rgba(0, 0, 0, 0.03), transparent 55%),
+      radial-gradient(circle at 100% 0, rgba(0, 0, 0, 0.02), transparent 55%),
+      radial-gradient(circle at 0 100%, rgba(74, 60, 255, 0.08), transparent 55%),
+      radial-gradient(circle at 100% 100%, rgba(0, 0, 0, 0.03), transparent 55%);
+    background-color: #ffffff;
+  }
+}
+@font-face {
+    font-family: "Petrov Sans";
+    src: url("/fonts/PetrovSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Petrov Sans";
+    src: url("/fonts/PetrovSans-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Petrov Sans";
+    src: url("/fonts/PetrovSans-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Petrov Sans";
+    src: url("/fonts/PetrovSans-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Petrov Sans";
+    src: url("/fonts/PetrovSans-Thin.ttf") format("truetype");
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+
