@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
           {/* Bloc marque */}
           <div className="max-w-md space-y-4">
             <div className="flex items-center gap-3">
-                <img src="/freepik__background__37344.png" alt="JAWA" className=" lg:w-30
+                <img src="/background.png" alt="JAWA" className=" lg:w-30
                  lg:h-10" />
             </div>
             <p className="text-sm text-white/70">
