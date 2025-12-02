@@ -33,14 +33,14 @@ const services = [
     title: "Branding & Identité",
     description:
       "Création ou refonte d’identités de marque fortes, mémorables et parfaitement alignées sur vos valeurs.",
-    image: "/services/branding.png",
+    image: "/branding.jpg",
     gradient: "from-[#020617] via-[#4A3CFF] to-[#111827]"
   },
   {
     title: "Maintenance Informatique",
     description:
       "Infogérance, sécurité, mises à jour et support pour garantir la continuité et la stabilité de vos outils.",
-    image: "/services/it.png",
+    image: "/it.jpeg",
     gradient: "from-[#020617] via-[#111827] to-[#4A3CFF]"
   }
 ];
