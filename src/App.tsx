@@ -6,6 +6,7 @@ import Services from "./components/Services";
 import Portfolio from "./components/Portfolio";
 import About from "./components/About";
 import Process from "./components/Process";
+import Pricing from "./components/Pricing";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -14,6 +15,7 @@ import AdminLayout from "./pages/admin/AdminLayout";
 import Dashboard from "./pages/admin/Dashboard";
 import ServicesManager from "./pages/admin/ServicesManager";
 import PortfolioManager from "./pages/admin/PortfolioManager";
+import PricingManager from "./pages/admin/PricingManager";
 import AboutManager from "./pages/admin/AboutManager";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -31,6 +33,7 @@ const Home: React.FC = () => {
         <Portfolio />
         <About />
         <Process />
+        <Pricing />
         <Testimonials />
         <Contact />
       </main>
@@ -55,6 +58,7 @@ const App: React.FC = () => {
               <Route index element={<Dashboard />} />
               <Route path="services" element={<ServicesManager />} />
               <Route path="portfolio" element={<PortfolioManager />} />
+              <Route path="pricing" element={<PricingManager />} />
               <Route path="about" element={<AboutManager />} />
             </Route>
           </Route>
@@ -65,5 +69,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
-

@@ -32,8 +32,8 @@ const AdminLayout: React.FC = () => {
                     <Link
                         to="/admin"
                         className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${location.pathname === '/admin'
-                                ? 'bg-primary text-white shadow-lg shadow-primary/25'
-                                : 'text-white/60 hover:bg-white/5 hover:text-white'
+                            ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                            : 'text-white/60 hover:bg-white/5 hover:text-white'
                             }`}
                     >
                         Tableau de bord
@@ -46,8 +46,8 @@ const AdminLayout: React.FC = () => {
                     <Link
                         to="/admin/services"
                         className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${isActive('/admin/services')
-                                ? 'bg-primary text-white shadow-lg shadow-primary/25'
-                                : 'text-white/60 hover:bg-white/5 hover:text-white'
+                            ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                            : 'text-white/60 hover:bg-white/5 hover:text-white'
                             }`}
                     >
                         Services
@@ -55,17 +55,26 @@ const AdminLayout: React.FC = () => {
                     <Link
                         to="/admin/portfolio"
                         className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${isActive('/admin/portfolio')
-                                ? 'bg-primary text-white shadow-lg shadow-primary/25'
-                                : 'text-white/60 hover:bg-white/5 hover:text-white'
+                            ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                            : 'text-white/60 hover:bg-white/5 hover:text-white'
                             }`}
                     >
                         Portfolio
                     </Link>
                     <Link
+                        to="/admin/pricing"
+                        className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${isActive('/admin/pricing')
+                            ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                            : 'text-white/60 hover:bg-white/5 hover:text-white'
+                            }`}
+                    >
+                        Tarifs
+                    </Link>
+                    <Link
                         to="/admin/about"
                         className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${isActive('/admin/about')
-                                ? 'bg-primary text-white shadow-lg shadow-primary/25'
-                                : 'text-white/60 hover:bg-white/5 hover:text-white'
+                            ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                            : 'text-white/60 hover:bg-white/5 hover:text-white'
                             }`}
                     >
                         A Propos
@@ -88,7 +97,7 @@ const AdminLayout: React.FC = () => {
                     <Outlet />
                 </div>
             </main>
-        </div>
+        </div >
     );
 };
 

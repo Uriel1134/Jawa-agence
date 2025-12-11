@@ -38,24 +38,32 @@ const Portfolio: React.FC = () => {
   return (
     <section id="portfolio" className="section-padding bg-slate-50">
       <div className="container-wide">
-        <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <h2 className="section-title">Réalisations sélectionnées</h2>
-            <p className="section-subtitle">
-              Une sélection de projets qui illustrent la diversité de nos
-              expertises : produits SaaS, expériences mobiles, identités de
-              marque et interfaces sur‑mesure.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2 text-[11px] font-medium uppercase tracking-[0.16em] text-neutral-500">
-            <span className="rounded-full bg-white px-3 py-1 shadow-soft">
-              Tous
+        <div className="mb-12 flex flex-col items-end justify-between gap-10 md:flex-row md:items-end">
+          <div className="max-w-2xl">
+            <span className="mb-6 inline-block rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+              Portfolio
             </span>
-            <span>Web</span>
-            <span>Mobile</span>
-            <span>Branding</span>
-            <span>UI/UX</span>
+            <h2 className="font-display text-5xl font-bold leading-tight text-jawaBlack md:text-6xl lg:text-7xl">
+              Réalisations <br />
+              <span className="text-gray-300">sélectionnées.</span>
+            </h2>
           </div>
+          <p className="max-w-md text-sm leading-relaxed text-gray-500">
+            Une sélection de projets qui illustrent la diversité de nos
+            expertises : produits SaaS, expériences mobiles, identités de
+            marque et interfaces sur‑mesure.
+          </p>
+        </div>
+
+        {/* Filters */}
+        <div className="mb-14 flex flex-wrap gap-2 text-[11px] font-medium uppercase tracking-[0.16em] text-neutral-500">
+          <span className="rounded-full bg-white px-3 py-1 shadow-soft text-primary">
+            Tous
+          </span>
+          <span className="px-3 py-1 hover:text-primary cursor-pointer transition-colors">Web</span>
+          <span className="px-3 py-1 hover:text-primary cursor-pointer transition-colors">Mobile</span>
+          <span className="px-3 py-1 hover:text-primary cursor-pointer transition-colors">Branding</span>
+          <span className="px-3 py-1 hover:text-primary cursor-pointer transition-colors">UI/UX</span>
         </div>
 
         {loading ? (

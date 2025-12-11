@@ -13,29 +13,62 @@ interface Service {
     gradient: string;
 }
 
+interface PricingPlan {
+    id: number;
+    title: string;
+    price: string;
+    currency: string;
+    features: string[];
+    is_popular: boolean;
+    category: string;
+    button_text: string;
+    button_link: string;
+}
+
 const ServiceDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [service, setService] = useState<Service | null>(null);
+    const [plans, setPlans] = useState<PricingPlan[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchService = async () => {
+        const fetchData = async () => {
             if (!id) return;
-            const { data, error } = await supabase
+            setLoading(true);
+
+            // 1. Fetch Service Details
+            const { data: serviceData, error: serviceError } = await supabase
                 .from('services')
                 .select('*')
                 .eq('id', id)
                 .single();
 
-            if (error) {
-                console.error('Error fetching service:', error);
-            } else {
-                setService(data);
+            if (serviceError) {
+                console.error('Error fetching service:', serviceError);
+                setLoading(false);
+                return;
+            }
+
+            setService(serviceData);
+
+            // 2. Fetch Associated Pricing Plans (based on service title matching category)
+            if (serviceData) {
+                const { data: plansData, error: plansError } = await supabase
+                    .from('pricing_plans')
+                    .select('*')
+                    .eq('category', serviceData.title)
+                    .order('id', { ascending: true });
+
+                if (plansError) {
+                    console.error('Error fetching plans:', plansError);
+                } else {
+                    setPlans(plansData || []);
+                }
             }
             setLoading(false);
         };
 
-        fetchService();
+        fetchData();
     }, [id]);
 
     if (loading) return (
@@ -86,7 +119,7 @@ const ServiceDetails: React.FC = () => {
                     </div>
 
                     {/* Details Content */}
-                    <div className="mx-auto max-w-4xl border-t border-gray-100 pt-16">
+                    <div className="mx-auto max-w-4xl border-t border-gray-100 pt-16 mb-20">
                         <h2 className="text-2xl font-bold text-jawaBlack mb-8 font-display">Notre approche</h2>
                         <div className="prose prose-lg prose-slate text-gray-600 max-w-none">
                             {service.details ? (
@@ -97,16 +130,76 @@ const ServiceDetails: React.FC = () => {
                                 <p className="italic text-gray-400">Détails à venir pour ce service.</p>
                             )}
                         </div>
-
-                        {/* CTA */}
-                        <div className="mt-16 rounded-3xl bg-jawaBlack p-12 text-center text-white">
-                            <h3 className="mb-4 font-display text-3xl font-bold">Prêt à démarrer ?</h3>
-                            <p className="mb-8 text-white/60">Discutons de votre projet et voyons comment nous pouvons vous aider.</p>
-                            <a href="mailto:contact@jawa-agence.me" className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold text-jawaBlack transition hover:bg-gray-100">
-                                Nous contacter
-                            </a>
-                        </div>
                     </div>
+
+                    {/* Pricing Section (Replaces Generic CTA) */}
+                    {plans.length > 0 && (
+                        <div className="border-t border-gray-100 pt-16">
+                            <div className="text-center mb-12">
+                                <h2 className="font-display text-3xl font-bold text-jawaBlack mb-4">Nos offres pour {service.title}</h2>
+                                <p className="text-gray-500">Choisissez le plan adapté à vos besoins.</p>
+                            </div>
+
+                            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+                                {plans.map((plan) => (
+                                    <div
+                                        key={plan.id}
+                                        className={`relative flex flex-col rounded-[2rem] p-8 transition-all duration-300 hover:-translate-y-2 ${plan.is_popular
+                                                ? 'bg-jawaBlack text-white shadow-2xl shadow-jawaBlack/20 scale-105 z-10'
+                                                : 'bg-white text-jawaBlack border border-gray-100 shadow-soft hover:shadow-xl'
+                                            }`}
+                                    >
+                                        {plan.is_popular && (
+                                            <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg shadow-primary/30">
+                                                Recommandé
+                                            </div>
+                                        )}
+
+                                        <div className="mb-8 text-center">
+                                            <h3 className={`mb-2 text-lg font-bold ${plan.is_popular ? 'text-white' : 'text-jawaBlack'}`}>
+                                                {plan.title}
+                                            </h3>
+                                            <div className="flex items-baseline justify-center gap-1">
+                                                <span className="text-xs font-medium opacity-60">À partir de</span>
+                                                <span className={`font-display text-5xl font-bold ${plan.is_popular ? 'text-primary' : 'text-jawaBlack'}`}>
+                                                    {plan.price}
+                                                </span>
+                                                <span className="text-xl font-bold opacity-60">{plan.currency}</span>
+                                            </div>
+                                        </div>
+
+                                        <ul className="mb-8 flex-1 space-y-4">
+                                            {plan.features?.map((feature, index) => (
+                                                <li key={index} className="flex items-start gap-3 text-sm">
+                                                    <svg
+                                                        className={`mt-0.5 h-4 w-4 flex-shrink-0 ${plan.is_popular ? 'text-primary' : 'text-jawaBlack'}`}
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        stroke="currentColor"
+                                                    >
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                    <span className={plan.is_popular ? 'text-gray-300' : 'text-gray-600'}>
+                                                        {feature}
+                                                    </span>
+                                                </li>
+                                            ))}
+                                        </ul>
+
+                                        <a
+                                            href={plan.button_link}
+                                            className={`block w-full rounded-xl py-4 text-center text-xs font-bold uppercase tracking-widest transition-all ${plan.is_popular
+                                                    ? 'bg-primary text-white hover:bg-white hover:text-primary'
+                                                    : 'bg-jawaBlack text-white hover:bg-primary hover:text-white'
+                                                }`}
+                                        >
+                                            {plan.button_text}
+                                        </a>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </main>
             <Footer />
