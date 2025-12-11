@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#4A3CFF",
+        primary: "#2C14C7",
         jawaBlack: "#000000",
         jawaWhite: "#FFFFFF"
       },
@@ -18,7 +18,7 @@ module.exports = {
       },
       backgroundImage: {
         "hero-gradient":
-          "linear-gradient(135deg, #4A3CFF 0%, #2C14C7 50%, #000000 100%)"
+          "linear-gradient(135deg, #2C14C7 0%, #1a0b7e 50%, #000000 100%)"
       }
     }
   },

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import LogoMark from "./LogoMark";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  alwaysOpaque?: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ alwaysOpaque = false }) => {
   const [onLightSection, setOnLightSection] = useState(false);
 
   useEffect(() => {
@@ -17,11 +21,10 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-30 transition-colors duration-300 ${
-        onLightSection
+      className={`fixed inset-x-0 top-0 z-30 transition-colors duration-300 ${alwaysOpaque || onLightSection
           ? "bg-jawaBlack/95 backdrop-blur-md"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="container-wide flex items-center justify-between py-3">
         <a href="#home" className="flex items-center gap-2">
