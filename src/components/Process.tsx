@@ -1,33 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
+import { supabase } from "../supabaseClient";
 
-const steps = [
-  {
-    number: "01",
-    label: "Immersion",
-    description: "Analyse de votre marché et définition de la stratégie.",
-    tags: ["Audit UX", "Ateliers", "Stratégie"],
-  },
-  {
-    number: "02",
-    label: "Design UI",
-    description: "Création d'interfaces ergonomiques et esthétiques.",
-    tags: ["Maquettes", "Prototype", "Design System"],
-  },
-  {
-    number: "03",
-    label: "Développement",
-    description: "Code robuste et performant (React, Node, Supabase).",
-    tags: ["Frontend", "Backend", "QA Testing"],
-  },
-  {
-    number: "04",
-    label: "Lancement",
-    description: "Mise en ligne sécurisée et accompagnement.",
-    tags: ["Déploiement", "Formation", "Analytics"],
-  },
-];
+interface ProcessStepData {
+  id: number;
+  number: string;
+  label: string;
+  description: string;
+  tags: string[];
+}
 
-const ProcessStep: React.FC<{ step: typeof steps[0]; index: number }> = ({ step, index }) => {
+const ProcessStep: React.FC<{ step: ProcessStepData; index: number }> = ({ step, index }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const isEven = index % 2 === 0;
@@ -82,7 +64,7 @@ const ProcessStep: React.FC<{ step: typeof steps[0]; index: number }> = ({ step,
 
           {/* Tags Grid */}
           <div className="flex flex-wrap gap-2">
-            {step.tags.map((tag, i) => (
+            {step.tags?.map((tag, i) => (
               <span
                 key={i}
                 className="inline-flex items-center rounded-full bg-gray-50 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-gray-500 transition-colors group-hover:bg-primary/5 group-hover:text-primary dark:bg-white/10 dark:text-white/70 dark:group-hover:bg-primary/20 dark:group-hover:text-primary"
@@ -108,6 +90,30 @@ const ProcessStep: React.FC<{ step: typeof steps[0]; index: number }> = ({ step,
 };
 
 const Process: React.FC = () => {
+  const [steps, setSteps] = useState<ProcessStepData[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchSteps();
+  }, []);
+
+  const fetchSteps = async () => {
+    const { data, error } = await supabase
+      .from('process_steps')
+      .select('*')
+      .order('number', { ascending: true });
+
+    if (error) {
+      console.error('Error fetching process steps:', error);
+    } else if (data) {
+      setSteps(data);
+    }
+    setLoading(false);
+  };
+
+  if (loading) return null; // Or a loading spinner
+  if (steps.length === 0) return null;
+
   return (
     <section id="process" className="bg-white dark:bg-jawaBlack py-32 overflow-hidden transition-colors duration-300">
       <div className="container-wide">
@@ -134,7 +140,7 @@ const Process: React.FC = () => {
 
           <div className="space-y-12 md:space-y-16">
             {steps.map((step, index) => (
-              <ProcessStep key={step.number} step={step} index={index} />
+              <ProcessStep key={step.id} step={step} index={index} />
             ))}
           </div>
         </div>

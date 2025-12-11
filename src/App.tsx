@@ -6,6 +6,7 @@ import Services from "./components/Services";
 import Portfolio from "./components/Portfolio";
 import About from "./components/About";
 import Process from "./components/Process";
+import TrustedBy from "./components/TrustedBy";
 import Pricing from "./components/Pricing";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
@@ -17,6 +18,8 @@ import ServicesManager from "./pages/admin/ServicesManager";
 import PortfolioManager from "./pages/admin/PortfolioManager";
 import PricingManager from "./pages/admin/PricingManager";
 import AboutManager from "./pages/admin/AboutManager";
+import TrustedManager from "./pages/admin/TrustedManager";
+import ProcessManager from "./pages/admin/ProcessManager";
 import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -37,6 +40,7 @@ const Home: React.FC = () => {
         <Pricing />
         <Testimonials />
         <Contact />
+        <TrustedBy />
       </main>
       <Footer />
     </div>
@@ -62,6 +66,8 @@ const App: React.FC = () => {
                 <Route path="portfolio" element={<PortfolioManager />} />
                 <Route path="pricing" element={<PricingManager />} />
                 <Route path="about" element={<AboutManager />} />
+                <Route path="trusted" element={<TrustedManager />} />
+                <Route path="process" element={<ProcessManager />} />
               </Route>
             </Route>
           </Routes>

@@ -71,6 +71,24 @@ const AdminLayout: React.FC = () => {
                         Tarifs
                     </Link>
                     <Link
+                        to="/admin/process"
+                        className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${isActive('/admin/process')
+                            ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                            : 'text-white/60 hover:bg-white/5 hover:text-white'
+                            }`}
+                    >
+                        Processus
+                    </Link>
+                    <Link
+                        to="/admin/trusted"
+                        className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${isActive('/admin/trusted')
+                            ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                            : 'text-white/60 hover:bg-white/5 hover:text-white'
+                            }`}
+                    >
+                        Partenaires
+                    </Link>
+                    <Link
                         to="/admin/about"
                         className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${isActive('/admin/about')
                             ? 'bg-primary text-white shadow-lg shadow-primary/25'
