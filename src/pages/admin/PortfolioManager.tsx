@@ -305,7 +305,7 @@ const PortfolioManager: React.FC = () => {
                                         <div className="flex gap-2">
                                             <button
                                                 onClick={() => handleEdit(project)}
-                                                className="flex-1 rounded-lg bg-gray-50 py-2 text-xs font-semibold text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition"
+                                                className="flex-1 rounded-lg bg-gray-50 py-2 text-xs font-semibold text-gray-600 hover:bg-primary/5 hover:text-primary transition"
                                             >
                                                 Modifier
                                             </button>

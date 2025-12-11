@@ -28,13 +28,13 @@ const Testimonials: React.FC = () => {
   return (
     <section
       id="testimonials"
-      className="section-padding bg-white paper-abstract"
+      className="section-padding bg-white paper-abstract dark:bg-jawaBlack transition-colors duration-300"
     >
       <div className="container-wide">
         <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="section-title">Ce que disent nos clients</h2>
-            <p className="section-subtitle">
+            <h2 className="section-title text-jawaBlack dark:text-white">Ce que disent nos clients</h2>
+            <p className="section-subtitle text-neutral-600 dark:text-white/60">
               Nous concevons des expériences digitales qui marquent, et nos
               clients partagent ici leurs retours sur les projets menés avec
               JAWA.
@@ -42,12 +42,12 @@ const Testimonials: React.FC = () => {
           </div>
           <div className="flex items-center gap-3 self-start md:self-auto">
             <div className="flex -space-x-2">
-              <div className="h-9 w-9 rounded-full border-2 border-white bg-primary/70" />
-              <div className="h-9 w-9 rounded-full border-2 border-white bg-primary/40" />
-              <div className="h-9 w-9 rounded-full border-2 border-white bg-primary/20" />
+              <div className="h-9 w-9 rounded-full border-2 border-white dark:border-jawaBlack bg-primary/70" />
+              <div className="h-9 w-9 rounded-full border-2 border-white dark:border-jawaBlack bg-primary/40" />
+              <div className="h-9 w-9 rounded-full border-2 border-white dark:border-jawaBlack bg-primary/20" />
             </div>
-            <p className="text-xs font-medium text-neutral-700">
-              <span className="text-sm font-semibold text-jawaBlack">
+            <p className="text-xs font-medium text-neutral-700 dark:text-white/70">
+              <span className="text-sm font-semibold text-jawaBlack dark:text-white">
                 120+
               </span>{" "}
               clients accompagnés
@@ -59,13 +59,13 @@ const Testimonials: React.FC = () => {
           {testimonials.map((t) => (
             <figure
               key={t.name}
-              className="flex h-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-8 shadow-soft"
+              className="flex h-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-8 shadow-soft dark:bg-white/5 dark:border-white/10"
             >
               <div className="mb-6">
                 <span className="mb-4 inline-block text-4xl text-primary">
                   “
                 </span>
-                <p className="text-sm leading-relaxed text-neutral-800">
+                <p className="text-sm leading-relaxed text-neutral-800 dark:text-white/80">
                   {t.quote}
                 </p>
               </div>
@@ -74,8 +74,8 @@ const Testimonials: React.FC = () => {
                 <div className="h-12 w-12 overflow-hidden rounded-full bg-primary/10">
                   {/* Placeholder avatar */}
                 </div>
-                <figcaption className="text-xs text-neutral-600">
-                  <p className="font-semibold text-neutral-900">{t.name}</p>
+                <figcaption className="text-xs text-neutral-600 dark:text-white/60">
+                  <p className="font-semibold text-neutral-900 dark:text-white">{t.name}</p>
                   <p>
                     {t.role} · {t.company}
                   </p>
@@ -86,10 +86,10 @@ const Testimonials: React.FC = () => {
         </div>
 
         <div className="mt-8 flex justify-center gap-4">
-          <button className="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 bg-white text-neutral-700 shadow-sm transition hover:border-primary hover:text-primary">
+          <button className="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 bg-white text-neutral-700 shadow-sm transition hover:border-primary hover:text-primary dark:bg-white/10 dark:border-white/10 dark:text-white dark:hover:bg-primary dark:hover:border-primary">
             ←
           </button>
-          <button className="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-900 bg-neutral-900 text-white shadow-sm transition hover:bg-primary hover:border-primary">
+          <button className="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-900 bg-neutral-900 text-white shadow-sm transition hover:bg-primary hover:border-primary dark:bg-white dark:text-jawaBlack dark:border-white dark:hover:bg-primary dark:hover:text-white dark:hover:border-primary">
             →
           </button>
         </div>

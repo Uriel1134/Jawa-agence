@@ -17,7 +17,7 @@
   }
 
   body {
-    @apply font-body bg-jawaWhite text-jawaBlack antialiased;
+    @apply font-body bg-jawaWhite text-jawaBlack dark:bg-jawaBlack dark:text-white antialiased;
   }
 
   h1,
@@ -80,46 +80,109 @@
     background-color: #ffffff;
   }
 }
+
 @font-face {
-    font-family: "Petrov Sans";
-    src: url("/fonts/PetrovSans-Regular.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "Petrov Sans";
-    src: url("/fonts/PetrovSans-Bold.ttf") format("truetype");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "Petrov Sans";
-    src: url("/fonts/PetrovSans-SemiBold.ttf") format("truetype");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "Petrov Sans";
-    src: url("/fonts/PetrovSans-Light.ttf") format("truetype");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "Petrov Sans";
-    src: url("/fonts/PetrovSans-Thin.ttf") format("truetype");
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "Gobold_Extra1";
-    src: url("/fonts/Gobold_Extra1.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Petrov Sans";
+  src: url("/fonts/PetrovSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Petrov Sans";
+  src: url("/fonts/PetrovSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Petrov Sans";
+  src: url("/fonts/PetrovSans-SemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Animations Custom */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
   }
 
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes scroll-bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.btn-shimmer {
+  background: linear-gradient(90deg, #2C14C7 0%, #3D24E7 50%, #2C14C7 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+@font-face {
+  font-family: "Petrov Sans";
+  src: url("/fonts/PetrovSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Petrov Sans";
+  src: url("/fonts/PetrovSans-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gobold_Extra1";
+  src: url("/fonts/Gobold_Extra1.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

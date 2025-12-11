@@ -18,6 +18,7 @@ import PortfolioManager from "./pages/admin/PortfolioManager";
 import PricingManager from "./pages/admin/PricingManager";
 import AboutManager from "./pages/admin/AboutManager";
 import { AuthProvider } from "./context/AuthContext";
+import { ThemeProvider } from "./context/ThemeContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 import ProjectDetails from "./pages/ProjectDetails";
@@ -25,7 +26,7 @@ import ServiceDetails from "./pages/ServiceDetails";
 
 const Home: React.FC = () => {
   return (
-    <div className="bg-jawaWhite text-jawaBlack">
+    <div className="bg-jawaWhite text-jawaBlack dark:bg-jawaBlack dark:text-white transition-colors duration-300">
       <Header />
       <main>
         <Hero />
@@ -44,27 +45,29 @@ const Home: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/project/:id" element={<ProjectDetails />} />
-          <Route path="/service/:id" element={<ServiceDetails />} />
-          <Route path="/login" element={<Login />} />
+    <ThemeProvider>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/project/:id" element={<ProjectDetails />} />
+            <Route path="/service/:id" element={<ServiceDetails />} />
+            <Route path="/login" element={<Login />} />
 
-          {/* Routes Admin Protégées */}
-          <Route element={<ProtectedRoute />}>
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<Dashboard />} />
-              <Route path="services" element={<ServicesManager />} />
-              <Route path="portfolio" element={<PortfolioManager />} />
-              <Route path="pricing" element={<PricingManager />} />
-              <Route path="about" element={<AboutManager />} />
+            {/* Routes Admin Protégées */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<Dashboard />} />
+                <Route path="services" element={<ServicesManager />} />
+                <Route path="portfolio" element={<PortfolioManager />} />
+                <Route path="pricing" element={<PricingManager />} />
+                <Route path="about" element={<AboutManager />} />
+              </Route>
             </Route>
-          </Route>
-        </Routes>
-      </Router>
-    </AuthProvider>
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </ThemeProvider>
   );
 };
 

@@ -33,19 +33,19 @@ const Services: React.FC = () => {
   }, []);
 
   return (
-    <section id="services" className="bg-white py-32">
+    <section id="services" className="bg-white dark:bg-jawaBlack py-32 transition-colors duration-300">
       <div className="container-wide">
         <div className="mb-24 flex flex-col items-end justify-between gap-10 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <span className="mb-6 inline-block rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+            <span className="mb-6 inline-block rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary dark:bg-white/5 dark:border-white/10 dark:text-white">
               Expertise
             </span>
-            <h2 className="font-display text-5xl font-bold leading-tight text-jawaBlack md:text-6xl lg:text-7xl">
+            <h2 className="font-display text-5xl font-bold leading-tight text-jawaBlack dark:text-white md:text-6xl lg:text-7xl">
               Nos domaines <br />
-              <span className="text-gray-300">d'intervention.</span>
+              <span className="text-gray-300 dark:text-white/40">d'intervention.</span>
             </h2>
           </div>
-          <p className="max-w-md text-sm leading-relaxed text-gray-500">
+          <p className="max-w-md text-sm leading-relaxed text-gray-500 dark:text-white/60">
             Nous combinons stratégie, design et technologie pour créer des
             produits digitaux qui marquent les esprits et accélèrent votre
             croissance.
@@ -62,28 +62,28 @@ const Services: React.FC = () => {
               <Link
                 to={`/service/${service.id}`}
                 key={service.id}
-                className="group relative overflow-hidden rounded-3xl bg-gray-50 p-8 transition-all duration-500 hover:bg-jawaBlack hover:text-white md:p-10 block animate-fade-in-up"
+                className="group relative overflow-hidden rounded-3xl bg-gray-50 dark:bg-white/5 dark:border dark:border-white/10 p-8 transition-all duration-500 hover:bg-jawaBlack hover:text-white dark:hover:bg-primary/20 dark:hover:border-primary/50 md:p-10 block animate-fade-in-up"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="relative z-10 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
                   <div className="flex flex-1 flex-col gap-6">
                     <div className="flex items-center gap-4">
-                      <span className="font-display text-3xl font-bold text-gray-200 transition-colors duration-500 group-hover:text-primary">
+                      <span className="font-display text-3xl font-bold text-gray-200 dark:text-white/10 transition-colors duration-500 group-hover:text-primary">
                         0{index + 1}
                       </span>
-                      <div className="h-px w-12 bg-gray-200 transition-colors duration-500 group-hover:bg-primary/50" />
+                      <div className="h-px w-12 bg-gray-200 dark:bg-white/10 transition-colors duration-500 group-hover:bg-primary/50" />
                     </div>
 
                     <div>
-                      <h3 className="mb-3 font-display text-2xl font-bold leading-tight md:text-3xl">
+                      <h3 className="mb-3 font-display text-2xl font-bold leading-tight md:text-3xl text-jawaBlack dark:text-white group-hover:text-white">
                         {service.title}
                       </h3>
-                      <p className="max-w-md text-sm leading-relaxed text-gray-500 transition-colors duration-500 group-hover:text-white/70">
+                      <p className="max-w-md text-sm leading-relaxed text-gray-500 dark:text-white/60 transition-colors duration-500 group-hover:text-white/70">
                         {service.description}
                       </p>
                     </div>
 
-                    <div className="group/btn mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-gray-200 bg-white px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-jawaBlack transition-all duration-300 hover:bg-jawaBlack hover:text-white hover:border-jawaBlack group-hover:border-white/30 group-hover:bg-white/5 group-hover:text-white group-hover:backdrop-blur-sm">
+                    <div className="group/btn mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-gray-200 bg-white px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-jawaBlack transition-all duration-300 hover:bg-jawaBlack hover:text-white hover:border-jawaBlack group-hover:border-white/30 group-hover:bg-white/5 group-hover:text-white group-hover:backdrop-blur-sm dark:bg-white/10 dark:text-white dark:border-white/10">
                       En savoir plus
                       <svg className="h-3 w-3 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -92,7 +92,7 @@ const Services: React.FC = () => {
                   </div>
 
                   {/* Image Side */}
-                  <div className="relative w-full md:w-1/3 aspect-[4/3] overflow-hidden rounded-2xl bg-gray-200">
+                  <div className="relative w-full md:w-1/3 aspect-[4/3] overflow-hidden rounded-2xl bg-gray-200 dark:bg-white/5">
                     {service.image && (
                       <img
                         src={service.image}

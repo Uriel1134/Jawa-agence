@@ -43,7 +43,7 @@ const Login: React.FC = () => {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full rounded border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
+                            className="w-full rounded border border-gray-300 p-2 focus:border-primary focus:outline-none"
                             required
                         />
                     </div>
@@ -53,14 +53,14 @@ const Login: React.FC = () => {
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full rounded border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
+                            className="w-full rounded border border-gray-300 p-2 focus:border-primary focus:outline-none"
                             required
                         />
                     </div>
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full rounded bg-blue-600 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
+                        className="w-full rounded bg-primary py-2 text-white hover:bg-primary/90 disabled:opacity-50"
                     >
                         {loading ? 'Loading...' : 'Sign In'}
                     </button>

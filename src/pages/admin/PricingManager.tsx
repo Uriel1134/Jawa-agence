@@ -326,7 +326,7 @@ const PricingManager: React.FC = () => {
                                             <div className="flex items-center gap-2 opacity-0 transition group-hover:opacity-100">
                                                 <button
                                                     onClick={() => handleEdit(plan)}
-                                                    className="rounded-lg p-2 text-gray-400 hover:bg-blue-50 hover:text-blue-600 transition text-xs font-medium uppercase"
+                                                    className="rounded-lg p-2 text-gray-400 hover:bg-primary/5 hover:text-primary transition text-xs font-medium uppercase"
                                                 >
                                                     Modifier
                                                 </button>

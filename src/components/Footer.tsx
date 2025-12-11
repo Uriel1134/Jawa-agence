@@ -1,55 +1,56 @@
 import React from "react";
 
 const Footer: React.FC = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-jawaBlack text-white">
-      <div className="container-wide pt-14 pb-10">
+    <footer className="bg-jawaBlack text-white relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+      <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div className="container-wide pt-20 pb-10 relative z-10">
+
+        {/* Large CTA */}
+        <div className="mb-20 flex flex-col md:flex-row items-center justify-between gap-8 border-b border-white/10 pb-12">
+          <h2 className="font-display text-3xl md:text-4xl font-bold max-w-xl">
+            Prêt à faire décoller votre projet digital ? <span className="text-primary">On s'occupe de tout.</span>
+          </h2>
+          <a href="#contact" className="btn-primary btn-shimmer whitespace-nowrap">
+            Lancer mon projet
+          </a>
+        </div>
+
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
           {/* Bloc marque */}
-          <div className="max-w-md space-y-4">
+          <div className="max-w-md space-y-6">
             <div className="flex items-center gap-3">
-                <img src="/background.png" alt="JAWA" className=" lg:w-30
+              <img src="/background.png" alt="JAWA" className=" lg:w-30
                  lg:h-10" />
             </div>
-            <p className="text-sm text-white/70">
+            <p className="text-sm text-white/70 leading-relaxed">
               Chez JAWA, nous imaginons et développons des expériences
-              numériques sur‑mesure
+              numériques sur‑mesure qui allient esthétique, performance et résultats.
             </p>
-            <div className="space-y-2 text-sm">
+            <div className="space-y-3 text-sm">
               <p className="font-medium text-white">Suivez‑nous sur</p>
               <div className="flex gap-3">
-                <a
-                  href="#"
-                  aria-label="LinkedIn"
-                  className="flex h-10 w-10 items-center justify-center text-white/70 hover:border-primary hover:text-primary"
-                >
-                  <img
-                    src="/icons/linkedin.svg"
-                    alt=""
-                    className="h-6 w-6"
-                  />
-                </a>
-                <a
-                  href="#"
-                  aria-label="Behance"
-                  className="flex h-10 w-10 items-center justify-center text-white/70 hover:border-primary hover:text-primary"
-                >
-                  <img src="/icons/behance.svg" alt="" className="h-6 w-6" />
-                </a>
-                <a
-                  href="#"
-                  aria-label="Dribbble"
-                  className="flex h-10 w-10 items-center justify-center text-white/70 hover:border-primary hover:text-primary"
-                >
-                  <img src="/icons/dribbble.svg" alt="" className="h-6 w-6" />
-                </a>
-                <a
-                  href="#"
-                  aria-label="Instagram"
-                  className="flex h-10 w-10 items-center justify-center text-white/70 hover:border-primary hover:text-primary"
-                >
-                  <img src="/icons/instagram.svg" alt="" className="h-6 w-6" />
-                </a>
+                {['linkedin', 'behance', 'dribbble', 'instagram'].map((social) => (
+                  <a
+                    key={social}
+                    href="#"
+                    aria-label={social}
+                    className="group flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/70 transition-all duration-300 hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/25"
+                  >
+                    <img
+                      src={`/icons/${social}.svg`}
+                      alt=""
+                      className="h-5 w-5 transition-transform group-hover:scale-110"
+                    />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
@@ -57,25 +58,25 @@ const Footer: React.FC = () => {
           {/* Liens utiles */}
           <div className="grid flex-1 gap-8 text-sm sm:grid-cols-2 lg:grid-cols-3">
             <div>
-              <h3 className="mb-4 font-semibold text-primary">Liens utiles</h3>
-              <ul className="space-y-2 text-white/70">
+              <h3 className="mb-6 font-bold text-white">Liens utiles</h3>
+              <ul className="space-y-3 text-white/60">
                 <li>
-                  <a href="#contact" className="hover:text-primary">
+                  <a href="#contact" className="hover:text-primary transition-colors">
                     Contactez‑nous
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-primary">
+                  <a href="#services" className="hover:text-primary transition-colors">
                     Services
                   </a>
                 </li>
                 <li>
-                  <a href="#portfolio" className="hover:text-primary">
+                  <a href="#portfolio" className="hover:text-primary transition-colors">
                     Portfolio
                   </a>
                 </li>
                 <li>
-                  <span className="cursor-default text-white/50">
+                  <span className="cursor-default text-white/30">
                     Politique de confidentialité
                   </span>
                 </li>
@@ -83,35 +84,35 @@ const Footer: React.FC = () => {
             </div>
 
             <div>
-              <h3 className="mb-4 font-semibold text-primary">Liens rapides</h3>
-              <ul className="space-y-2 text-white/70">
+              <h3 className="mb-6 font-bold text-white">Liens rapides</h3>
+              <ul className="space-y-3 text-white/60">
                 <li>
-                  <a href="#about" className="hover:text-primary">
+                  <a href="#about" className="hover:text-primary transition-colors">
                     À propos
                   </a>
                 </li>
                 <li>
-                  <a href="#process" className="hover:text-primary">
+                  <a href="#process" className="hover:text-primary transition-colors">
                     Processus
                   </a>
                 </li>
                 <li>
-                  <a href="#testimonials" className="hover:text-primary">
+                  <a href="#testimonials" className="hover:text-primary transition-colors">
                     Témoignages
                   </a>
                 </li>
                 <li>
-                  <span className="cursor-default text-white/50">Blog &amp; Article</span>
+                  <span className="cursor-default text-white/30">Blog &amp; Article</span>
                 </li>
               </ul>
             </div>
 
             {/* Contact */}
             <div>
-              <h3 className="mb-4 font-semibold text-primary">Contactez‑nous</h3>
+              <h3 className="mb-6 font-bold text-white">Contactez‑nous</h3>
               <ul className="space-y-4 text-white/80">
-                <li className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/40">
+                <li className="flex items-center gap-3 group">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-colors group-hover:border-primary group-hover:bg-primary/10 group-hover:text-primary">
                     {/* icône téléphone */}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -124,10 +125,10 @@ const Footer: React.FC = () => {
                       <path d="M6.6 3.4 4.5 5.5a2 2 0 0 0-.3 2.4 21.6 21.6 0 0 0 7.9 7.9 2 2 0 0 0 2.4-.3l2.1-2.1a1 1 0 0 0-.1-1.5l-2.6-1.7a1 1 0 0 0-1.2.1l-.9.9a10.8 10.8 0 0 1-3-3l.9-.9a1 1 0 0 0 .1-1.2L8.1 3.5a1 1 0 0 0-1.5-.1Z" />
                     </svg>
                   </span>
-                  <p className="text-sm">+229 01XXXXXXXX</p>
+                  <p className="text-sm group-hover:text-white transition-colors">+229 01XXXXXXXX</p>
                 </li>
-                <li className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/40">
+                <li className="flex items-center gap-3 group">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-colors group-hover:border-primary group-hover:bg-primary/10 group-hover:text-primary">
                     {/* icône email */}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -141,10 +142,10 @@ const Footer: React.FC = () => {
                       <path d="m5 7 7 5 7-5" />
                     </svg>
                   </span>
-                  <p className="text-sm">contact@jawa-agence.tech</p>
+                  <p className="text-sm group-hover:text-white transition-colors">contact@jawa-agence.tech</p>
                 </li>
-                <li className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/40">
+                <li className="flex items-center gap-3 group">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-colors group-hover:border-primary group-hover:bg-primary/10 group-hover:text-primary">
                     {/* icône localisation */}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -158,7 +159,7 @@ const Footer: React.FC = () => {
                       <circle cx="12" cy="11" r="2.3" />
                     </svg>
                   </span>
-                  <p className="text-sm">
+                  <p className="text-sm group-hover:text-white transition-colors">
                     Bénin, Cotonou
                     <br />
                     Sur rendez‑vous
@@ -169,14 +170,26 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-4">
-          <p className="text-center text-[11px] text-white/60">
+        <div className="mt-16 border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-center text-[11px] text-white/40">
             © {new Date().getFullYear()}{" "}
-            <span className="font-brand tracking-[0.24em] uppercase">
+            <span className="font-brand tracking-[0.24em] uppercase text-white/80">
               JAWA
             </span>{" "}
             Agency. Tous droits réservés.
           </p>
+
+          <button
+            onClick={scrollToTop}
+            className="group flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-white/40 hover:text-primary transition-colors"
+          >
+            Retour en haut
+            <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/20 group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all">
+              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+              </svg>
+            </span>
+          </button>
         </div>
       </div>
     </footer>
@@ -184,6 +197,7 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
+
 
 
 

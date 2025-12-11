@@ -11,12 +11,12 @@ interface Service {
 }
 
 const GRADIENT_OPTIONS = [
-    { label: 'Bleu Jawa', value: 'from-[#4A3CFF] via-[#1B1B3A] to-[#02010A]', preview: 'bg-gradient-to-br from-[#4A3CFF] via-[#1B1B3A] to-[#02010A]' },
-    { label: 'Sombre Profond', value: 'from-[#02010A] via-[#4A3CFF] to-[#181824]', preview: 'bg-gradient-to-br from-[#02010A] via-[#4A3CFF] to-[#181824]' },
-    { label: 'Nuit & Bleu', value: 'from-[#111827] via-[#4A3CFF] to-[#060714]', preview: 'bg-gradient-to-br from-[#111827] via-[#4A3CFF] to-[#060714]' },
-    { label: 'Bleu & Noir', value: 'from-[#4A3CFF] via-[#111827] to-[#020617]', preview: 'bg-gradient-to-br from-[#4A3CFF] via-[#111827] to-[#020617]' },
-    { label: 'Noir & Bleu', value: 'from-[#020617] via-[#4A3CFF] to-[#111827]', preview: 'bg-gradient-to-br from-[#020617] via-[#4A3CFF] to-[#111827]' },
-    { label: 'Noir & Indigo', value: 'from-[#020617] via-[#111827] to-[#4A3CFF]', preview: 'bg-gradient-to-br from-[#020617] via-[#111827] to-[#4A3CFF]' },
+    { label: 'Bleu Jawa', value: 'from-[#2C14C7] via-[#1B1B3A] to-[#02010A]', preview: 'bg-gradient-to-br from-[#2C14C7] via-[#1B1B3A] to-[#02010A]' },
+    { label: 'Sombre Profond', value: 'from-[#02010A] via-[#2C14C7] to-[#181824]', preview: 'bg-gradient-to-br from-[#02010A] via-[#2C14C7] to-[#181824]' },
+    { label: 'Nuit & Bleu', value: 'from-[#111827] via-[#2C14C7] to-[#060714]', preview: 'bg-gradient-to-br from-[#111827] via-[#2C14C7] to-[#060714]' },
+    { label: 'Bleu & Noir', value: 'from-[#2C14C7] via-[#111827] to-[#020617]', preview: 'bg-gradient-to-br from-[#2C14C7] via-[#111827] to-[#020617]' },
+    { label: 'Noir & Bleu', value: 'from-[#020617] via-[#2C14C7] to-[#111827]', preview: 'bg-gradient-to-br from-[#020617] via-[#2C14C7] to-[#111827]' },
+    { label: 'Noir & Indigo', value: 'from-[#020617] via-[#111827] to-[#2C14C7]', preview: 'bg-gradient-to-br from-[#020617] via-[#111827] to-[#2C14C7]' },
 ];
 
 const ServicesManager: React.FC = () => {
@@ -263,7 +263,7 @@ const ServicesManager: React.FC = () => {
                                         <div className="flex items-center gap-2 opacity-0 transition group-hover:opacity-100">
                                             <button
                                                 onClick={() => handleEdit(service)}
-                                                className="rounded-lg p-2 text-gray-400 hover:bg-blue-50 hover:text-blue-600 transition text-xs font-medium uppercase"
+                                                className="rounded-lg p-2 text-gray-400 hover:bg-primary/5 hover:text-primary transition text-xs font-medium uppercase"
                                             >
                                                 Modifier
                                             </button>

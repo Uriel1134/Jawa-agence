@@ -36,19 +36,19 @@ const Portfolio: React.FC = () => {
   }, []);
 
   return (
-    <section id="portfolio" className="section-padding bg-slate-50">
+    <section id="portfolio" className="section-padding bg-slate-50 dark:bg-jawaBlack transition-colors duration-300">
       <div className="container-wide">
         <div className="mb-12 flex flex-col items-end justify-between gap-10 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <span className="mb-6 inline-block rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+            <span className="mb-6 inline-block rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary dark:bg-white/5 dark:border-white/10 dark:text-white">
               Portfolio
             </span>
-            <h2 className="font-display text-5xl font-bold leading-tight text-jawaBlack md:text-6xl lg:text-7xl">
+            <h2 className="font-display text-5xl font-bold leading-tight text-jawaBlack dark:text-white md:text-6xl lg:text-7xl">
               Réalisations <br />
-              <span className="text-gray-300">sélectionnées.</span>
+              <span className="text-gray-300 dark:text-white/40">sélectionnées.</span>
             </h2>
           </div>
-          <p className="max-w-md text-sm leading-relaxed text-gray-500">
+          <p className="max-w-md text-sm leading-relaxed text-gray-500 dark:text-white/60">
             Une sélection de projets qui illustrent la diversité de nos
             expertises : produits SaaS, expériences mobiles, identités de
             marque et interfaces sur‑mesure.
@@ -56,8 +56,8 @@ const Portfolio: React.FC = () => {
         </div>
 
         {/* Filters */}
-        <div className="mb-14 flex flex-wrap gap-2 text-[11px] font-medium uppercase tracking-[0.16em] text-neutral-500">
-          <span className="rounded-full bg-white px-3 py-1 shadow-soft text-primary">
+        <div className="mb-14 flex flex-wrap gap-2 text-[11px] font-medium uppercase tracking-[0.16em] text-neutral-500 dark:text-white/60">
+          <span className="rounded-full bg-white dark:bg-white/10 px-3 py-1 shadow-soft text-primary dark:text-white">
             Tous
           </span>
           <span className="px-3 py-1 hover:text-primary cursor-pointer transition-colors">Web</span>
@@ -67,13 +67,13 @@ const Portfolio: React.FC = () => {
         </div>
 
         {loading ? (
-          <div className="text-center py-10">Chargement des projets...</div>
+          <div className="text-center py-10 dark:text-white">Chargement des projets...</div>
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
               <article
                 key={project.id}
-                className="group relative overflow-hidden rounded-3xl bg-white shadow-soft transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
+                className="group relative overflow-hidden rounded-3xl bg-white dark:bg-white/5 dark:border dark:border-white/10 shadow-soft transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
                 {/* Image Background */}
                 <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 via-white to-jawaBlack/5 transition-transform duration-500 group-hover:scale-105">
