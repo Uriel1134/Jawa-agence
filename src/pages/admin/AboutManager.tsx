@@ -111,20 +111,20 @@ const AboutManager: React.FC = () => {
     return (
         <div>
             <div className="mb-8">
-                <h2 className="text-3xl font-display font-bold text-jawaBlack">A Propos</h2>
-                <p className="text-gray-500 mt-1">Modifiez le contenu de la section "A Propos".</p>
+                <h2 className="text-3xl font-display font-bold text-jawaBlack dark:text-white">A Propos</h2>
+                <p className="text-gray-500 dark:text-white/60 mt-1">Modifiez le contenu de la section "A Propos".</p>
             </div>
 
-            <div className="rounded-2xl bg-white p-8 shadow-sm border border-gray-100 max-w-4xl">
+            <div className="rounded-2xl bg-white dark:bg-white/5 p-8 shadow-sm border border-gray-100 dark:border-white/10 max-w-4xl">
                 <form onSubmit={handleSubmit} className="space-y-8">
 
                     {/* Section Image & Stats */}
                     <div className="grid gap-6 md:grid-cols-2">
                         <div>
-                            <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-500">Image Principale</label>
+                            <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Image Principale</label>
                             <div className="flex flex-col gap-3">
                                 {formData.image_url && !selectedFile && (
-                                    <div className="relative h-48 w-full overflow-hidden rounded-xl border border-gray-200">
+                                    <div className="relative h-48 w-full overflow-hidden rounded-xl border border-gray-200 dark:border-white/10">
                                         <img src={formData.image_url} alt="Aperçu" className="h-full w-full object-cover" />
                                     </div>
                                 )}
@@ -132,80 +132,80 @@ const AboutManager: React.FC = () => {
                                     type="file"
                                     accept="image/*"
                                     onChange={handleFileChange}
-                                    className="w-full rounded-xl border border-gray-200 bg-gray-50 p-2 text-xs text-gray-500 file:mr-4 file:rounded-lg file:border-0 file:bg-primary/10 file:px-4 file:py-2 file:text-xs file:font-semibold file:text-primary hover:file:bg-primary/20"
+                                    className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-2 text-xs text-gray-500 dark:text-white/60 file:mr-4 file:rounded-lg file:border-0 file:bg-primary/10 file:px-4 file:py-2 file:text-xs file:font-semibold file:text-primary hover:file:bg-primary/20 dark:file:bg-primary dark:file:text-white"
                                 />
                             </div>
                         </div>
                         <div className="space-y-4">
                             <div>
-                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Score de satisfaction</label>
+                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Score de satisfaction</label>
                                 <input
                                     type="text"
                                     value={formData.satisfaction_score}
                                     onChange={(e) => setFormData({ ...formData, satisfaction_score: e.target.value })}
-                                    className="w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-sm font-medium focus:border-primary focus:outline-none"
+                                    className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none"
                                     placeholder="Ex: 4,9/5"
                                 />
                             </div>
                             <div>
-                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Texte Satisfaction</label>
+                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Texte Satisfaction</label>
                                 <input
                                     type="text"
                                     value={formData.satisfaction_text}
                                     onChange={(e) => setFormData({ ...formData, satisfaction_text: e.target.value })}
-                                    className="w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-sm font-medium focus:border-primary focus:outline-none"
+                                    className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none"
                                     placeholder="Ex: Basé sur 120 avis"
                                 />
                             </div>
                         </div>
                     </div>
 
-                    <hr className="border-gray-100" />
+                    <hr className="border-gray-100 dark:border-white/10" />
 
                     {/* Section Textes */}
                     <div className="space-y-6">
                         <div>
-                            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Titre Principal</label>
+                            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Titre Principal</label>
                             <input
                                 type="text"
                                 value={formData.intro_title}
                                 onChange={(e) => setFormData({ ...formData, intro_title: e.target.value })}
-                                className="w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-sm font-medium focus:border-primary focus:outline-none"
+                                className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none"
                             />
                         </div>
                         <div>
-                            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Introduction</label>
+                            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Introduction</label>
                             <textarea
                                 value={formData.intro_text}
                                 onChange={(e) => setFormData({ ...formData, intro_text: e.target.value })}
-                                className="w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-sm font-medium focus:border-primary focus:outline-none"
+                                className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none"
                                 rows={3}
                             />
                         </div>
                         <div>
-                            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Notre Histoire</label>
+                            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Notre Histoire</label>
                             <textarea
                                 value={formData.history_text}
                                 onChange={(e) => setFormData({ ...formData, history_text: e.target.value })}
-                                className="w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-sm font-medium focus:border-primary focus:outline-none"
+                                className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none"
                                 rows={3}
                             />
                         </div>
                         <div>
-                            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Notre Mission</label>
+                            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Notre Mission</label>
                             <textarea
                                 value={formData.mission_text}
                                 onChange={(e) => setFormData({ ...formData, mission_text: e.target.value })}
-                                className="w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-sm font-medium focus:border-primary focus:outline-none"
+                                className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none"
                                 rows={3}
                             />
                         </div>
                         <div>
-                            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Notre Vision</label>
+                            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Notre Vision</label>
                             <textarea
                                 value={formData.vision_text}
                                 onChange={(e) => setFormData({ ...formData, vision_text: e.target.value })}
-                                className="w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-sm font-medium focus:border-primary focus:outline-none"
+                                className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none"
                                 rows={3}
                             />
                         </div>

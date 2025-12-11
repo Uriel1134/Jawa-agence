@@ -18,9 +18,9 @@ const AdminLayout: React.FC = () => {
     };
 
     return (
-        <div className="flex min-h-screen bg-[#F3F4F6] font-body">
+        <div className="flex min-h-screen bg-[#F3F4F6] dark:bg-jawaBlack font-body transition-colors duration-300">
             {/* Sidebar */}
-            <aside className="fixed inset-y-0 left-0 w-72 bg-jawaBlack text-white shadow-2xl">
+            <aside className="fixed inset-y-0 left-0 w-72 bg-jawaBlack text-white shadow-2xl border-r border-white/5">
                 <div className="flex h-24 items-center px-8 border-b border-white/10">
                     <div className="flex items-center gap-3">
                         <LogoMark size="md" />

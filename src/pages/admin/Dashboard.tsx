@@ -4,8 +4,8 @@ const Dashboard: React.FC = () => {
     return (
         <div>
             <div className="mb-8">
-                <h2 className="text-3xl font-display font-bold text-jawaBlack">Tableau de bord</h2>
-                <p className="text-gray-500 mt-1">Bienvenue sur votre espace d'administration.</p>
+                <h2 className="text-3xl font-display font-bold text-jawaBlack dark:text-white">Tableau de bord</h2>
+                <p className="text-gray-500 dark:text-white/60 mt-1">Bienvenue sur votre espace d'administration.</p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-3">
@@ -26,12 +26,12 @@ const Dashboard: React.FC = () => {
                 </div>
 
                 {/* Carte Info Rapide */}
-                <div className="rounded-2xl bg-white p-6 shadow-sm border border-gray-100 flex flex-col justify-center items-center text-center">
-                    <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 mb-3 text-xl font-bold">
+                <div className="rounded-2xl bg-white dark:bg-white/5 p-6 shadow-sm border border-gray-100 dark:border-white/10 flex flex-col justify-center items-center text-center">
+                    <div className="h-12 w-12 rounded-full bg-green-100 dark:bg-green-500/20 flex items-center justify-center text-green-600 dark:text-green-400 mb-3 text-xl font-bold">
                         OK
                     </div>
-                    <h4 className="font-semibold text-gray-900">Site en ligne</h4>
-                    <p className="text-sm text-gray-500 mt-1">Votre site est visible et performant.</p>
+                    <h4 className="font-semibold text-gray-900 dark:text-white">Site en ligne</h4>
+                    <p className="text-sm text-gray-500 dark:text-white/60 mt-1">Votre site est visible et performant.</p>
                 </div>
             </div>
         </div>

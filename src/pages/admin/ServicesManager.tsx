@@ -151,57 +151,57 @@ const ServicesManager: React.FC = () => {
         <div>
             <div className="flex items-center justify-between mb-8">
                 <div>
-                    <h2 className="text-3xl font-display font-bold text-jawaBlack">Services</h2>
-                    <p className="text-gray-500 mt-1">Gérez les prestations affichées sur la page d'accueil.</p>
+                    <h2 className="text-3xl font-display font-bold text-jawaBlack dark:text-white">Services</h2>
+                    <p className="text-gray-500 dark:text-white/60 mt-1">Gérez les prestations affichées sur la page d'accueil.</p>
                 </div>
             </div>
 
             <div className="grid gap-8 lg:grid-cols-3">
                 {/* Formulaire */}
                 <div className="lg:col-span-1">
-                    <div className="sticky top-8 rounded-2xl bg-white p-6 shadow-sm border border-gray-100">
-                        <h3 className="mb-6 text-lg font-bold text-gray-900">
+                    <div className="sticky top-8 rounded-2xl bg-white dark:bg-white/5 p-6 shadow-sm border border-gray-100 dark:border-white/10">
+                        <h3 className="mb-6 text-lg font-bold text-gray-900 dark:text-white">
                             {editingId ? 'Modifier le service' : 'Ajouter un service'}
                         </h3>
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
-                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Titre</label>
+                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Titre</label>
                                 <input
                                     type="text"
                                     value={formData.title}
                                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                                    className="w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-sm font-medium transition focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+                                    className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white transition focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary/20"
                                     placeholder="Ex: Développement Web"
                                     required
                                 />
                             </div>
                             <div>
-                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Description Courte</label>
+                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Description Courte</label>
                                 <textarea
                                     value={formData.description}
                                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                                    className="w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-sm font-medium transition focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+                                    className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white transition focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary/20"
                                     rows={3}
                                     placeholder="Description courte du service..."
                                     required
                                 />
                             </div>
                             <div>
-                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Détails Complets</label>
+                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Détails Complets</label>
                                 <textarea
                                     value={formData.details}
                                     onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                                    className="w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-sm font-medium transition focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+                                    className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white transition focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary/20"
                                     rows={6}
                                     placeholder="Description détaillée pour la page dédiée..."
                                 />
                             </div>
 
                             <div>
-                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Image</label>
+                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Image</label>
                                 <div className="flex flex-col gap-2">
                                     {formData.image && !selectedFile && (
-                                        <div className="relative h-32 w-full overflow-hidden rounded-xl border border-gray-200">
+                                        <div className="relative h-32 w-full overflow-hidden rounded-xl border border-gray-200 dark:border-white/10">
                                             <img src={formData.image} alt="Aperçu" className="h-full w-full object-cover" />
                                         </div>
                                     )}
@@ -209,9 +209,9 @@ const ServicesManager: React.FC = () => {
                                         type="file"
                                         accept="image/*"
                                         onChange={handleFileChange}
-                                        className="w-full rounded-xl border border-gray-200 bg-gray-50 p-2 text-xs text-gray-500 file:mr-4 file:rounded-lg file:border-0 file:bg-primary/10 file:px-4 file:py-2 file:text-xs file:font-semibold file:text-primary hover:file:bg-primary/20"
+                                        className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-2 text-xs text-gray-500 dark:text-white/60 file:mr-4 file:rounded-lg file:border-0 file:bg-primary/10 file:px-4 file:py-2 file:text-xs file:font-semibold file:text-primary hover:file:bg-primary/20 dark:file:bg-primary dark:file:text-white"
                                     />
-                                    <p className="text-[10px] text-gray-400">Laissez vide pour conserver l'image actuelle.</p>
+                                    <p className="text-[10px] text-gray-400 dark:text-white/30">Laissez vide pour conserver l'image actuelle.</p>
                                 </div>
                             </div>
 
@@ -228,7 +228,7 @@ const ServicesManager: React.FC = () => {
                                     <button
                                         type="button"
                                         onClick={resetForm}
-                                        className="rounded-xl bg-gray-100 px-4 py-3 text-sm font-bold text-gray-600 transition hover:bg-gray-200"
+                                        className="rounded-xl bg-gray-100 dark:bg-white/10 px-4 py-3 text-sm font-bold text-gray-600 dark:text-white transition hover:bg-gray-200 dark:hover:bg-white/20"
                                     >
                                         Annuler
                                     </button>
@@ -240,25 +240,25 @@ const ServicesManager: React.FC = () => {
 
                 {/* Liste */}
                 <div className="lg:col-span-2">
-                    <div className="rounded-2xl bg-white shadow-sm border border-gray-100 overflow-hidden">
+                    <div className="rounded-2xl bg-white dark:bg-white/5 shadow-sm border border-gray-100 dark:border-white/10 overflow-hidden">
                         {loading ? (
-                            <div className="p-12 text-center text-gray-500">Chargement...</div>
+                            <div className="p-12 text-center text-gray-500 dark:text-white/60">Chargement...</div>
                         ) : services.length === 0 ? (
                             <div className="p-12 text-center">
-                                <div className="mx-auto mb-4 h-12 w-12 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 font-bold">
+                                <div className="mx-auto mb-4 h-12 w-12 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center text-gray-400 dark:text-white/40 font-bold">
                                     S
                                 </div>
-                                <h3 className="text-lg font-medium text-gray-900">Aucun service</h3>
-                                <p className="text-gray-500">Commencez par ajouter votre premier service.</p>
+                                <h3 className="text-lg font-medium text-gray-900 dark:text-white">Aucun service</h3>
+                                <p className="text-gray-500 dark:text-white/60">Commencez par ajouter votre premier service.</p>
                             </div>
                         ) : (
-                            <div className="divide-y divide-gray-100">
+                            <div className="divide-y divide-gray-100 dark:divide-white/10">
                                 {services.map((service) => (
-                                    <div key={service.id} className="group flex items-start gap-4 p-6 transition hover:bg-gray-50">
+                                    <div key={service.id} className="group flex items-start gap-4 p-6 transition hover:bg-gray-50 dark:hover:bg-white/5">
                                         <div className={`h-16 w-16 flex-shrink-0 rounded-xl bg-gradient-to-br ${service.gradient} shadow-sm`} />
                                         <div className="flex-1 min-w-0">
-                                            <h4 className="text-base font-bold text-gray-900">{service.title}</h4>
-                                            <p className="mt-1 text-sm text-gray-500 line-clamp-2">{service.description}</p>
+                                            <h4 className="text-base font-bold text-gray-900 dark:text-white">{service.title}</h4>
+                                            <p className="mt-1 text-sm text-gray-500 dark:text-white/60 line-clamp-2">{service.description}</p>
                                         </div>
                                         <div className="flex items-center gap-2 opacity-0 transition group-hover:opacity-100">
                                             <button

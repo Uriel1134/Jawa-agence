@@ -153,26 +153,26 @@ const PricingManager: React.FC = () => {
         <div>
             <div className="flex items-center justify-between mb-8">
                 <div>
-                    <h2 className="text-3xl font-display font-bold text-jawaBlack">Tarifs</h2>
-                    <p className="text-gray-500 mt-1">Gérez vos offres et abonnements.</p>
+                    <h2 className="text-3xl font-display font-bold text-jawaBlack dark:text-white">Tarifs</h2>
+                    <p className="text-gray-500 dark:text-white/60 mt-1">Gérez vos offres et abonnements.</p>
                 </div>
             </div>
 
             <div className="grid gap-8 lg:grid-cols-3">
                 {/* Formulaire */}
                 <div className="lg:col-span-1">
-                    <div className="sticky top-8 rounded-2xl bg-white p-6 shadow-sm border border-gray-100">
-                        <h3 className="mb-6 text-lg font-bold text-gray-900">
+                    <div className="sticky top-8 rounded-2xl bg-white dark:bg-white/5 p-6 shadow-sm border border-gray-100 dark:border-white/10">
+                        <h3 className="mb-6 text-lg font-bold text-gray-900 dark:text-white">
                             {editingId ? 'Modifier l\'offre' : 'Ajouter une offre'}
                         </h3>
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
-                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Titre</label>
+                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Titre</label>
                                 <input
                                     type="text"
                                     value={formData.title}
                                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                                    className="w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-sm font-medium transition focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+                                    className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white transition focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary/20"
                                     placeholder="Ex: Site Vitrine"
                                     required
                                 />
@@ -180,16 +180,16 @@ const PricingManager: React.FC = () => {
 
                             {/* Category Dropdown */}
                             <div>
-                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Catégorie</label>
+                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Catégorie</label>
                                 <select
                                     value={formData.category}
                                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                                    className="w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-sm font-medium transition focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none"
+                                    className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white transition focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none"
                                     required
                                 >
-                                    <option value="" disabled>Sélectionner une catégorie</option>
+                                    <option value="" disabled className="dark:bg-jawaBlack">Sélectionner une catégorie</option>
                                     {services.map(service => (
-                                        <option key={service.id} value={service.title}>
+                                        <option key={service.id} value={service.title} className="dark:bg-jawaBlack">
                                             {service.title}
                                         </option>
                                     ))}
@@ -198,30 +198,30 @@ const PricingManager: React.FC = () => {
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Prix</label>
+                                    <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Prix</label>
                                     <input
                                         type="text"
                                         value={formData.price}
                                         onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-                                        className="w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-sm font-medium transition focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+                                        className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white transition focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary/20"
                                         placeholder="Ex: 899"
                                         required
                                     />
                                 </div>
                                 <div>
-                                    <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Devise</label>
+                                    <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Devise</label>
                                     <input
                                         type="text"
                                         value={formData.currency}
                                         onChange={(e) => setFormData({ ...formData, currency: e.target.value })}
-                                        className="w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-sm font-medium transition focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+                                        className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white transition focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary/20"
                                         placeholder="Ex: €"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="mb-1.5 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-gray-500">
+                                <label className="mb-1.5 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">
                                     Fonctionnalités
                                     <button type="button" onClick={addFeature} className="text-primary hover:text-primary/80 text-[10px]">
                                         + Ajouter
@@ -234,7 +234,7 @@ const PricingManager: React.FC = () => {
                                                 type="text"
                                                 value={feature}
                                                 onChange={(e) => handleFeatureChange(index, e.target.value)}
-                                                className="w-full rounded-lg border border-gray-200 bg-gray-50 p-2 text-xs font-medium focus:border-primary focus:outline-none"
+                                                className="w-full rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-2 text-xs font-medium dark:text-white focus:border-primary focus:outline-none"
                                                 placeholder="Fonctionnalité..."
                                             />
                                             {formData.features.length > 1 && (
@@ -259,7 +259,7 @@ const PricingManager: React.FC = () => {
                                     onChange={(e) => setFormData({ ...formData, is_popular: e.target.checked })}
                                     className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
                                 />
-                                <label htmlFor="is_popular" className="text-sm font-medium text-gray-700">
+                                <label htmlFor="is_popular" className="text-sm font-medium text-gray-700 dark:text-white/80">
                                     Mettre en avant (Populaire)
                                 </label>
                             </div>
@@ -275,7 +275,7 @@ const PricingManager: React.FC = () => {
                                     <button
                                         type="button"
                                         onClick={resetForm}
-                                        className="rounded-xl bg-gray-100 px-4 py-3 text-sm font-bold text-gray-600 transition hover:bg-gray-200"
+                                        className="rounded-xl bg-gray-100 dark:bg-white/10 px-4 py-3 text-sm font-bold text-gray-600 dark:text-white transition hover:bg-gray-200 dark:hover:bg-white/20"
                                     >
                                         Annuler
                                     </button>
@@ -288,51 +288,51 @@ const PricingManager: React.FC = () => {
                 {/* Liste Groupée */}
                 <div className="lg:col-span-2 space-y-8">
                     {loading ? (
-                        <div className="p-12 text-center text-gray-500 bg-white rounded-2xl shadow-sm border border-gray-100">Chargement...</div>
+                        <div className="p-12 text-center text-gray-500 dark:text-white/60 bg-white dark:bg-white/5 rounded-2xl shadow-sm border border-gray-100 dark:border-white/10">Chargement...</div>
                     ) : plans.length === 0 ? (
-                        <div className="p-12 text-center bg-white rounded-2xl shadow-sm border border-gray-100">
-                            <h3 className="text-lg font-medium text-gray-900">Aucune offre</h3>
-                            <p className="text-gray-500">Commencez par ajouter votre première offre.</p>
+                        <div className="p-12 text-center bg-white dark:bg-white/5 rounded-2xl shadow-sm border border-gray-100 dark:border-white/10">
+                            <h3 className="text-lg font-medium text-gray-900 dark:text-white">Aucune offre</h3>
+                            <p className="text-gray-500 dark:text-white/60">Commencez par ajouter votre première offre.</p>
                         </div>
                     ) : (
                         Object.entries(groupedPlans).map(([category, categoryPlans]) => (
-                            <div key={category} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                                <div className="bg-gray-50 px-6 py-4 border-b border-gray-100">
-                                    <h3 className="font-bold text-gray-900">{category}</h3>
+                            <div key={category} className="bg-white dark:bg-white/5 rounded-2xl shadow-sm border border-gray-100 dark:border-white/10 overflow-hidden">
+                                <div className="bg-gray-50 dark:bg-white/5 px-6 py-4 border-b border-gray-100 dark:border-white/10">
+                                    <h3 className="font-bold text-gray-900 dark:text-white">{category}</h3>
                                 </div>
-                                <div className="divide-y divide-gray-100">
+                                <div className="divide-y divide-gray-100 dark:divide-white/10">
                                     {categoryPlans.map((plan) => (
-                                        <div key={plan.id} className="group flex items-start gap-4 p-6 transition hover:bg-gray-50">
-                                            <div className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl ${plan.is_popular ? 'bg-primary text-white' : 'bg-gray-100 text-gray-500'}`}>
+                                        <div key={plan.id} className="group flex items-start gap-4 p-6 transition hover:bg-gray-50 dark:hover:bg-white/5">
+                                            <div className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl ${plan.is_popular ? 'bg-primary text-white' : 'bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-white/60'}`}>
                                                 <span className="font-bold">{plan.currency}</span>
                                             </div>
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center gap-2">
-                                                    <h4 className="text-base font-bold text-gray-900">{plan.title}</h4>
+                                                    <h4 className="text-base font-bold text-gray-900 dark:text-white">{plan.title}</h4>
                                                     {plan.is_popular && (
                                                         <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold uppercase text-primary">Populaire</span>
                                                     )}
                                                 </div>
-                                                <p className="text-sm font-medium text-gray-900">{plan.price} {plan.currency}</p>
+                                                <p className="text-sm font-medium text-gray-900 dark:text-white/80">{plan.price} {plan.currency}</p>
                                                 <div className="mt-2 flex flex-wrap gap-1">
                                                     {plan.features?.slice(0, 3).map((f, i) => (
-                                                        <span key={i} className="inline-block rounded bg-gray-100 px-1.5 py-0.5 text-[10px] text-gray-600">{f}</span>
+                                                        <span key={i} className="inline-block rounded bg-gray-100 dark:bg-white/10 px-1.5 py-0.5 text-[10px] text-gray-600 dark:text-white/60">{f}</span>
                                                     ))}
                                                     {plan.features && plan.features.length > 3 && (
-                                                        <span className="inline-block rounded bg-gray-100 px-1.5 py-0.5 text-[10px] text-gray-600">+{plan.features.length - 3}</span>
+                                                        <span className="inline-block rounded bg-gray-100 dark:bg-white/10 px-1.5 py-0.5 text-[10px] text-gray-600 dark:text-white/60">+{plan.features.length - 3}</span>
                                                     )}
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-2 opacity-0 transition group-hover:opacity-100">
                                                 <button
                                                     onClick={() => handleEdit(plan)}
-                                                    className="rounded-lg p-2 text-gray-400 hover:bg-primary/5 hover:text-primary transition text-xs font-medium uppercase"
+                                                    className="rounded-lg p-2 text-gray-400 hover:bg-primary/5 hover:text-primary dark:hover:bg-primary dark:hover:text-white transition text-xs font-medium uppercase"
                                                 >
                                                     Modifier
                                                 </button>
                                                 <button
                                                     onClick={() => handleDelete(plan.id)}
-                                                    className="rounded-lg p-2 text-gray-400 hover:bg-red-50 hover:text-red-600 transition text-xs font-medium uppercase"
+                                                    className="rounded-lg p-2 text-gray-400 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-500/20 dark:hover:text-red-400 transition text-xs font-medium uppercase"
                                                 >
                                                     Supprimer
                                                 </button>
