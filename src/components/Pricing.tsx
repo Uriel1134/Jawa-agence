@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
+import SectionHeader from "./SectionHeader";
 
 interface PricingPlan {
     id: number;
@@ -48,16 +49,13 @@ const Pricing: React.FC = () => {
     return (
         <section id="pricing" className="section-padding bg-slate-50/50 dark:bg-jawaBlack/50 backdrop-blur-sm transition-colors duration-300">
             <div className="container-wide">
-                {/* Header */}
-                <div className="mb-20 flex flex-col items-center text-center">
-                    <span className="section-badge mb-6">
-                        Tarifs
-                    </span>
-                    <h2 className="font-display text-4xl font-bold leading-tight text-jawaBlack dark:text-white md:text-5xl">
-                        Des offres claires <br />
-                        <span className="text-gray-400 dark:text-white/40">et transparentes.</span>
-                    </h2>
-                </div>
+                <SectionHeader
+                    number="05."
+                    title="Des offres claires et transparentes"
+                    backgroundTitle="TARIFS"
+                    align="center"
+                    className="mb-16"
+                />
 
                 {/* Tabs */}
                 {categories.length > 0 && (

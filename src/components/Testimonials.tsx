@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
+import SectionHeader from "./SectionHeader";
 
 interface Testimonial {
   id: number;
@@ -13,6 +14,7 @@ interface Testimonial {
 }
 
 const Testimonials: React.FC = () => {
+  // ... state declarations
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -48,6 +50,7 @@ const Testimonials: React.FC = () => {
   };
 
   const uploadAvatar = async (file: File): Promise<string | null> => {
+    // ... uploadAvatar implementation
     try {
       setUploading(true);
       const fileExt = file.name.split('.').pop();
@@ -72,6 +75,7 @@ const Testimonials: React.FC = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
+    // ... handleSubmit implementation
     e.preventDefault();
     setSubmitting(true);
 
@@ -101,16 +105,14 @@ const Testimonials: React.FC = () => {
       className="section-padding bg-white/50 paper-abstract dark:bg-jawaBlack/50 backdrop-blur-sm transition-colors duration-300"
     >
       <div className="container-wide">
-        <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <h2 className="section-title text-jawaBlack dark:text-white">Ce que disent nos clients</h2>
-            <p className="section-subtitle text-neutral-600 dark:text-white/60">
-              Nous concevons des expériences digitales qui marquent, et nos
-              clients partagent ici leurs retours sur les projets menés avec
-              JAWA.
-            </p>
-          </div>
-          <div className="flex flex-col gap-3">
+        <div className="mb-24 relative">
+          <SectionHeader
+            number="06."
+            title="Avis Clients"
+            description="Nous concevons des expériences digitales qui marquent, et nos clients partagent ici leurs retours sur les projets menés avec JAWA."
+            align="left"
+          />
+          <div className="absolute top-0 right-0 flex flex-col gap-3 mt-10 md:mt-0">
             <div className="flex items-center gap-3 self-start md:self-auto">
               <div className="flex -space-x-2">
                 <div className="h-9 w-9 rounded-full border-2 border-white dark:border-jawaBlack bg-primary/70" />

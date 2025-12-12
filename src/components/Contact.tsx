@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SectionHeader from "./SectionHeader";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -23,18 +24,15 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="section-padding-lg bg-white/50 dark:bg-jawaBlack/50 backdrop-blur-sm transition-colors duration-300">
       <div className="container-wide max-w-6xl">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <span className="section-badge mb-6">
-            Contact
-          </span>
-          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-jawaBlack dark:text-white mb-6">
-            Parlons de votre <br />
-            <span className="text-gray-300 dark:text-white/40">prochain projet</span>
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-white/60 max-w-2xl mx-auto">
-            Partagez votre vision, nous la transformerons en réalité digitale
-          </p>
+        <div className="mb-20">
+          <SectionHeader
+            number="09."
+            title="Parlons de votre prochain projet"
+            backgroundTitle="CONTACT"
+            description="Partagez votre vision, nous la transformerons en réalité digitale"
+            align="left"
+            className="mb-0"
+          />
         </div>
 
         {/* Main Content */}

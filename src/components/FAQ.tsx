@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
+import SectionHeader from "./SectionHeader";
 
 interface FAQ {
     id: number;
@@ -61,18 +62,14 @@ const FAQ: React.FC = () => {
     return (
         <section id="faq" className="section-padding bg-white dark:bg-jawaBlack transition-colors duration-300">
             <div className="container-wide max-w-4xl">
-                {/* Header */}
-                <div className="text-center mb-16">
-                    <span className="section-badge mb-6">
-                        FAQ
-                    </span>
-                    <h2 className="font-display text-5xl font-bold text-jawaBlack dark:text-white mb-4">
-                        Questions fréquentes
-                    </h2>
-                    <p className="text-gray-600 dark:text-white/60 max-w-2xl mx-auto">
-                        Trouvez rapidement des réponses à vos questions
-                    </p>
-                </div>
+                <SectionHeader
+                    number="07."
+                    title="Questions fréquentes"
+                    backgroundTitle="FAQ"
+                    description="Trouvez rapidement des réponses à vos questions"
+                    align="center"
+                    className="mb-12"
+                />
 
                 {/* Search */}
                 <div className="mb-8">

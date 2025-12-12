@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
 import { Link } from "react-router-dom";
+import SectionHeader from "./SectionHeader";
 
 interface Service {
   id: number;
@@ -35,22 +36,12 @@ const Services: React.FC = () => {
   return (
     <section id="services" className="section-padding-lg bg-white/50 dark:bg-jawaBlack/50 backdrop-blur-sm transition-colors duration-300">
       <div className="container-wide">
-        <div className="mb-24 flex flex-col items-end justify-between gap-10 md:flex-row md:items-end">
-          <div className="max-w-2xl">
-            <span className="section-badge mb-6">
-              Expertise
-            </span>
-            <h2 className="font-display text-5xl font-bold leading-tight text-jawaBlack dark:text-white md:text-6xl lg:text-7xl">
-              Nos domaines <br />
-              <span className="text-gray-300 dark:text-white/40">d'intervention.</span>
-            </h2>
-          </div>
-          <p className="max-w-md text-sm leading-relaxed text-gray-500 dark:text-white/60">
-            Nous combinons stratégie, design et technologie pour créer des
-            produits digitaux qui marquent les esprits et accélèrent votre
-            croissance.
-          </p>
-        </div>
+        <SectionHeader
+          number="01."
+          title="Services"
+          description="Nous combinons stratégie, design et technologie pour créer des produits digitaux qui marquent les esprits et accélèrent votre croissance."
+          align="right"
+        />
 
         {loading ? (
           <div className="flex items-center justify-center py-20">

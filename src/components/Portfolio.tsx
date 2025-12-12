@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../supabaseClient";
+import SectionHeader from "./SectionHeader";
 
 interface Project {
   id: number;
@@ -39,22 +40,12 @@ const Portfolio: React.FC = () => {
   return (
     <section id="portfolio" className="section-padding bg-slate-50/50 dark:bg-jawaBlack/50 backdrop-blur-sm transition-colors duration-300">
       <div className="container-wide">
-        <div className="mb-12 flex flex-col items-end justify-between gap-10 md:flex-row md:items-end">
-          <div className="max-w-2xl">
-            <span className="section-badge mb-6">
-              Portfolio
-            </span>
-            <h2 className="font-display text-5xl font-bold leading-tight text-jawaBlack dark:text-white md:text-6xl lg:text-7xl">
-              Réalisations <br />
-              <span className="text-gray-300 dark:text-white/40">sélectionnées.</span>
-            </h2>
-          </div>
-          <p className="max-w-md text-sm leading-relaxed text-gray-500 dark:text-white/60">
-            Une sélection de projets qui illustrent la diversité de nos
-            expertises : produits SaaS, expériences mobiles, identités de
-            marque et interfaces sur‑mesure.
-          </p>
-        </div>
+        <SectionHeader
+          number="02."
+          title="Portfolio"
+          description="Une sélection de projets qui illustrent la diversité de nos expertises : produits SaaS, expériences mobiles, identités de marque et interfaces sur‑mesure."
+          align="left"
+        />
 
         {/* Filters */}
         <div className="mb-14 flex flex-wrap gap-2 text-[11px] font-medium uppercase tracking-[0.16em] text-neutral-500 dark:text-white/60">

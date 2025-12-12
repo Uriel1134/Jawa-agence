@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { supabase } from "../supabaseClient";
+import SectionHeader from "./SectionHeader";
 
 interface ProcessStepData {
   id: number;
@@ -118,20 +119,12 @@ const Process: React.FC = () => {
     <section id="process" className="section-padding bg-white/50 dark:bg-jawaBlack/50 backdrop-blur-sm overflow-hidden transition-colors duration-300">
       <div className="container-wide">
         {/* Header */}
-        <div className="mb-24 flex flex-col items-end justify-between gap-10 md:flex-row md:items-end">
-          <div className="max-w-2xl">
-            <span className="section-badge mb-6">
-              Notre Méthode
-            </span>
-            <h2 className="font-display text-5xl font-bold leading-tight text-jawaBlack dark:text-white md:text-6xl lg:text-7xl">
-              Simple & <br />
-              <span className="text-gray-300 dark:text-white/40">Efficace.</span>
-            </h2>
-          </div>
-          <p className="max-w-md text-sm leading-relaxed text-gray-500 dark:text-white/60">
-            Une approche structurée et transparente. Nous décomposons la complexité pour livrer des produits d'exception, étape par étape.
-          </p>
-        </div>
+        <SectionHeader
+          number="04."
+          title="Processus"
+          description="Une approche structurée et transparente. Nous décomposons la complexité pour livrer des produits d'exception, étape par étape."
+          align="right"
+        />
 
         {/* Timeline */}
         <div className="relative mx-auto max-w-4xl">

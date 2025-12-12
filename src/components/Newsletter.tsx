@@ -1,5 +1,6 @@
 import React from 'react';
 import NewsletterForm from './NewsletterForm';
+import SectionHeader from './SectionHeader';
 
 const Newsletter: React.FC = () => {
     return (
@@ -15,15 +16,14 @@ const Newsletter: React.FC = () => {
                     <div className="grid lg:grid-cols-[1fr,1.2fr] gap-12 lg:gap-16 items-center">
                         {/* Left - Text Content */}
                         <div>
-                            <span className="section-badge mb-4">
-                                Newsletter
-                            </span>
-                            <h2 className="font-display text-5xl md:text-6xl font-bold text-jawaBlack dark:text-white mb-6 leading-tight">
-                                Restez à la pointe
-                            </h2>
-                            <p className="text-lg text-gray-600 dark:text-white/60 mb-8 leading-relaxed">
-                                Recevez nos dernières actualités, conseils d'experts et études de cas directement dans votre boîte mail. Une dose mensuelle d'inspiration digitale.
-                            </p>
+                            <SectionHeader
+                                number="08."
+                                title="Restez à la pointe"
+                                backgroundTitle="NEWS"
+                                description="Recevez nos dernières actualités, conseils d'experts et études de cas directement dans votre boîte mail. Une dose mensuelle d'inspiration digitale."
+                                align="left"
+                                className="mb-8 md:mb-12"
+                            />
 
                             {/* Benefits */}
                             <div className="space-y-4">

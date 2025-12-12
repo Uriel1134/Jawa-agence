@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabaseClient";
+import SectionHeader from "./SectionHeader";
 
 interface AboutData {
   image_url: string;
@@ -165,14 +166,13 @@ const About: React.FC = () => {
 
         {/* Colonne droite : contenu */}
         <div className="space-y-10 lg:pt-8">
-          <div>
-            <h2 className="section-title text-jawaBlack dark:text-white leading-tight">
-              {data.intro_title}
-            </h2>
-            <p className="section-subtitle text-lg leading-relaxed text-neutral-600 dark:text-white/60">
-              {data.intro_text}
-            </p>
-          </div>
+          <SectionHeader
+            number="03."
+            title={data.intro_title}
+            backgroundTitle="JAWA"
+            description={data.intro_text}
+            align="left"
+          />
 
           <div className="space-y-4">
             <div className="group cursor-default rounded-2xl border border-transparent p-4 transition-all hover:border-gray-100 hover:bg-gray-50 dark:hover:bg-white/5 dark:hover:border-white/10">
