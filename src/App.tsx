@@ -36,6 +36,7 @@ import TeamManager from "./pages/admin/TeamManager";
 import NewsletterManager from "./pages/admin/NewsletterManager";
 import FAQManager from "./pages/admin/FAQManager";
 import FooterManager from "./pages/admin/FooterManager";
+import ProjectsPage from "./pages/ProjectsPage";
 
 import ScrollBackground from "./components/ScrollBackground";
 
@@ -73,6 +74,7 @@ const App: React.FC = () => {
             <Route path="/team" element={<TeamPage />} />
             <Route path="/team/:id" element={<TeamMemberDetails />} />
             <Route path="/project/:id" element={<ProjectDetails />} />
+            <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/service/:id" element={<ServiceDetails />} />
             <Route path="/login" element={<Login />} />
 

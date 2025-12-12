@@ -1,5 +1,6 @@
+
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../supabaseClient";
 import SectionHeader from "./SectionHeader";
 
@@ -18,6 +19,7 @@ const Portfolio: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(6);
+  const [activeCategory, setActiveCategory] = useState("Tous");
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -37,6 +39,17 @@ const Portfolio: React.FC = () => {
     fetchProjects();
   }, []);
 
+  // Filter projects (Multi-category support) matches ProjectsPage
+  const filteredProjects = activeCategory === "Tous"
+    ? projects
+    : projects.filter((p) => {
+      const projectCategories = p.category ? p.category.split(',').map(c => c.trim()) : [];
+      return projectCategories.includes(activeCategory) || p.category.includes(activeCategory);
+    });
+
+  // Static categories
+  const categories = ["Tous", "Web", "Mobile", "Branding", "UI/UX"];
+
   return (
     <section id="portfolio" className="section-padding bg-slate-50/50 dark:bg-jawaBlack/50 backdrop-blur-sm transition-colors duration-300">
       <div className="container-wide">
@@ -49,21 +62,30 @@ const Portfolio: React.FC = () => {
 
         {/* Filters */}
         <div className="mb-14 flex flex-wrap gap-2 text-[11px] font-medium uppercase tracking-[0.16em] text-neutral-500 dark:text-white/60">
-          <span className="rounded-full bg-white dark:bg-white/10 px-3 py-1 shadow-soft text-primary dark:text-white">
-            Tous
-          </span>
-          <span className="px-3 py-1 hover:text-primary cursor-pointer transition-colors">Web</span>
-          <span className="px-3 py-1 hover:text-primary cursor-pointer transition-colors">Mobile</span>
-          <span className="px-3 py-1 hover:text-primary cursor-pointer transition-colors">Branding</span>
-          <span className="px-3 py-1 hover:text-primary cursor-pointer transition-colors">UI/UX</span>
+          {categories.map(category => (
+            <span
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`cursor-pointer transition-colors px-3 py-1 ${activeCategory === category
+                ? 'rounded-full bg-white dark:bg-white/10 shadow-soft text-primary dark:text-white'
+                : 'hover:text-primary'
+                }`}
+            >
+              {category}
+            </span>
+          ))}
         </div>
 
         {loading ? (
           <div className="text-center py-10 dark:text-white">Chargement des projets...</div>
+        ) : filteredProjects.length === 0 ? (
+          <div className="text-center py-10 text-gray-500 dark:text-white/60">
+            Aucun projet trouvé pour cette catégorie.
+          </div>
         ) : (
           <>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {projects.slice(0, visibleCount).map((project) => (
+              {filteredProjects.slice(0, visibleCount).map((project) => (
                 <article
                   key={project.id}
                   className="group relative overflow-hidden rounded-3xl shadow-soft transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
@@ -139,7 +161,7 @@ const Portfolio: React.FC = () => {
                       )}
 
                       <Link
-                        to={`/project/${project.id}`}
+                        to={`/ project / ${project.id} `}
                         className="group/btn mt-4 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-white backdrop-blur-sm transition-all hover:bg-white hover:text-jawaBlack focus:outline-none focus:ring-2 focus:ring-white/50 before:absolute before:inset-0 before:z-0"
                       >
                         Voir le détail
@@ -158,16 +180,15 @@ const Portfolio: React.FC = () => {
               ))}
             </div>
 
-            {visibleCount < projects.length && (
-              <div className="mt-12 text-center">
-                <button
-                  onClick={() => setVisibleCount((prev) => prev + 6)}
-                  className="btn-primary"
-                >
-                  Voir plus de projets
-                </button>
-              </div>
-            )}
+            {/* CTA */}
+            <div className="mt-16 text-center">
+              <Link
+                to="/projects"
+                className="btn-primary"
+              >
+                Voir tous les projets
+              </Link>
+            </div>
           </>
         )}
       </div>
@@ -176,3 +197,4 @@ const Portfolio: React.FC = () => {
 };
 
 export default Portfolio;
+
