@@ -7,6 +7,7 @@ interface Project {
     category: string;
     tag: string;
     image: string;
+    description?: string;
     github_url?: string;
     figma_url?: string;
     technologies?: string;
@@ -21,6 +22,7 @@ const PortfolioManager: React.FC = () => {
         category: '',
         tag: '',
         image: '',
+        description: '',
         github_url: '',
         figma_url: '',
         technologies: '',
@@ -125,6 +127,7 @@ const PortfolioManager: React.FC = () => {
             category: project.category,
             tag: project.tag || '',
             image: project.image || '',
+            description: project.description || '',
             github_url: project.github_url || '',
             figma_url: project.figma_url || '',
             technologies: project.technologies || '',
@@ -138,6 +141,7 @@ const PortfolioManager: React.FC = () => {
             category: '',
             tag: '',
             image: '',
+            description: '',
             github_url: '',
             figma_url: '',
             technologies: '',
@@ -183,6 +187,16 @@ const PortfolioManager: React.FC = () => {
                                     className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white transition focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary/20"
                                     placeholder="Ex: Développement Web"
                                     required
+                                />
+                            </div>
+                            <div>
+                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">Description</label>
+                                <textarea
+                                    value={formData.description}
+                                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                                    rows={4}
+                                    className="w-full rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-3 text-sm font-medium dark:text-white transition focus:border-primary focus:bg-white dark:focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary/20"
+                                    placeholder="Décrivez le projet..."
                                 />
                             </div>
                             <div>
