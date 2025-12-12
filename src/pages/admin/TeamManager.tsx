@@ -169,7 +169,7 @@ const TeamManager: React.FC = () => {
             <div className="grid gap-8 lg:grid-cols-3">
                 {/* Formulaire */}
                 <div className="lg:col-span-1">
-                    <div className="sticky top-8 rounded-2xl bg-white dark:bg-white/5 p-6 shadow-sm border border-gray-100 dark:border-white/10 max-h-[calc(100vh-6rem)] overflow-y-auto">
+                    <div className="sticky top-8 rounded-2xl bg-white dark:bg-white/5 p-6 shadow-sm border border-gray-100 dark:border-white/10 max-h-[calc(100vh-6rem)] overflow-y-auto no-scrollbar">
                         <h3 className="mb-6 text-lg font-bold text-gray-900 dark:text-white">
                             {editingId ? 'Modifier' : 'Ajouter'} un membre
                         </h3>

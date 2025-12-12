@@ -98,7 +98,7 @@ const Testimonials: React.FC = () => {
   return (
     <section
       id="testimonials"
-      className="section-padding bg-white paper-abstract dark:bg-jawaBlack transition-colors duration-300"
+      className="section-padding bg-white/50 paper-abstract dark:bg-jawaBlack/50 backdrop-blur-sm transition-colors duration-300"
     >
       <div className="container-wide">
         <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">

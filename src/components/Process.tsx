@@ -115,12 +115,12 @@ const Process: React.FC = () => {
   if (steps.length === 0) return null;
 
   return (
-    <section id="process" className="section-padding bg-white dark:bg-jawaBlack overflow-hidden transition-colors duration-300">
+    <section id="process" className="section-padding bg-white/50 dark:bg-jawaBlack/50 backdrop-blur-sm overflow-hidden transition-colors duration-300">
       <div className="container-wide">
         {/* Header */}
         <div className="mb-24 flex flex-col items-end justify-between gap-10 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <span className="mb-6 inline-block rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary dark:bg-white/5 dark:border-white/10 dark:text-white">
+            <span className="section-badge mb-6">
               Notre Méthode
             </span>
             <h2 className="font-display text-5xl font-bold leading-tight text-jawaBlack dark:text-white md:text-6xl lg:text-7xl">

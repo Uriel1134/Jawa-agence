@@ -46,11 +46,11 @@ const Pricing: React.FC = () => {
     const filteredPlans = plans.filter(plan => plan.category === activeCategory);
 
     return (
-        <section id="pricing" className="section-padding bg-slate-50 dark:bg-jawaBlack transition-colors duration-300">
+        <section id="pricing" className="section-padding bg-slate-50/50 dark:bg-jawaBlack/50 backdrop-blur-sm transition-colors duration-300">
             <div className="container-wide">
                 {/* Header */}
                 <div className="mb-20 flex flex-col items-center text-center">
-                    <span className="mb-6 inline-block rounded-full border border-gray-200 bg-white px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary dark:bg-white/5 dark:border-white/10 dark:text-white">
+                    <span className="section-badge mb-6">
                         Tarifs
                     </span>
                     <h2 className="font-display text-4xl font-bold leading-tight text-jawaBlack dark:text-white md:text-5xl">

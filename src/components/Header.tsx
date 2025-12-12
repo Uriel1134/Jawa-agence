@@ -63,13 +63,13 @@ const Header: React.FC<HeaderProps> = ({ alwaysOpaque = false }) => {
             )}
           </button>
 
-          <a href="/#contact" className="hidden md:inline-flex btn-primary btn-shimmer text-xs">
+          <a href="/#contact" className="hidden md:inline-flex btn-primary-light text-xs">
             Demander un devis
           </a>
 
           <a
             href="/#contact"
-            className="btn-primary btn-shimmer text-xs md:hidden"
+            className="btn-primary-light text-xs md:hidden"
             aria-label="Demander un devis"
           >
             Devis

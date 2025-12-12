@@ -1,6 +1,32 @@
 import React from "react";
 
+import { useEffect, useState } from "react";
+import { supabase } from "../supabaseClient";
+
+interface CompanyInfo {
+  description: string;
+  email: string;
+  phone: string;
+  address: string;
+  address_details: string;
+  social_linkedin: string;
+  social_instagram: string;
+  social_behance: string;
+  social_dribbble: string;
+}
+
 const Footer: React.FC = () => {
+  const [info, setInfo] = useState<CompanyInfo | null>(null);
+
+  useEffect(() => {
+    fetchInfo();
+  }, []);
+
+  const fetchInfo = async () => {
+    const { data } = await supabase.from("company_info").select("*").single();
+    if (data) setInfo(data);
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -13,16 +39,6 @@ const Footer: React.FC = () => {
 
       <div className="container-wide pt-20 pb-10 relative z-10">
 
-        {/* Large CTA */}
-        <div className="mb-20 flex flex-col md:flex-row items-center justify-between gap-8 border-b border-white/10 pb-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold max-w-xl">
-            Prêt à faire décoller votre projet digital ? <span className="text-primary">On s'occupe de tout.</span>
-          </h2>
-          <a href="#contact" className="btn-primary btn-shimmer whitespace-nowrap">
-            Lancer mon projet
-          </a>
-        </div>
-
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
           {/* Bloc marque */}
           <div className="max-w-md space-y-6">
@@ -31,8 +47,7 @@ const Footer: React.FC = () => {
                  lg:h-10" />
             </div>
             <p className="text-sm text-white/70 leading-relaxed">
-              Chez JAWA, nous imaginons et développons des expériences
-              numériques sur‑mesure qui allient esthétique, performance et résultats.
+              {info?.description || "Chez JAWA, nous imaginons et développons des expériences numériques sur‑mesure qui allient esthétique, performance et résultats."}
             </p>
             <div className="space-y-3 text-sm">
               <p className="font-medium text-white">Suivez‑nous sur</p>
@@ -40,7 +55,7 @@ const Footer: React.FC = () => {
                 {['linkedin', 'behance', 'dribbble', 'instagram'].map((social) => (
                   <a
                     key={social}
-                    href="#"
+                    href={info ? (info as any)[`social_${social}`] : "#"}
                     aria-label={social}
                     className="group flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/70 transition-all duration-300 hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/25"
                   >
@@ -125,7 +140,7 @@ const Footer: React.FC = () => {
                       <path d="M6.6 3.4 4.5 5.5a2 2 0 0 0-.3 2.4 21.6 21.6 0 0 0 7.9 7.9 2 2 0 0 0 2.4-.3l2.1-2.1a1 1 0 0 0-.1-1.5l-2.6-1.7a1 1 0 0 0-1.2.1l-.9.9a10.8 10.8 0 0 1-3-3l.9-.9a1 1 0 0 0 .1-1.2L8.1 3.5a1 1 0 0 0-1.5-.1Z" />
                     </svg>
                   </span>
-                  <p className="text-sm group-hover:text-white transition-colors">+229 01XXXXXXXX</p>
+                  <p className="text-sm group-hover:text-white transition-colors">{info?.phone || "+229 01XXXXXXXX"}</p>
                 </li>
                 <li className="flex items-center gap-3 group">
                   <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-colors group-hover:border-primary group-hover:bg-primary/10 group-hover:text-primary">
@@ -142,7 +157,7 @@ const Footer: React.FC = () => {
                       <path d="m5 7 7 5 7-5" />
                     </svg>
                   </span>
-                  <p className="text-sm group-hover:text-white transition-colors">contact@jawa-agence.tech</p>
+                  <p className="text-sm group-hover:text-white transition-colors">{info?.email || "contact@jawa-agence.tech"}</p>
                 </li>
                 <li className="flex items-center gap-3 group">
                   <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-colors group-hover:border-primary group-hover:bg-primary/10 group-hover:text-primary">
@@ -160,9 +175,9 @@ const Footer: React.FC = () => {
                     </svg>
                   </span>
                   <p className="text-sm group-hover:text-white transition-colors">
-                    Bénin, Cotonou
+                    {info?.address || "Bénin, Cotonou"}
                     <br />
-                    Sur rendez‑vous
+                    {info?.address_details || "Sur rendez‑vous"}
                   </p>
                 </li>
               </ul>

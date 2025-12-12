@@ -29,7 +29,7 @@ const TrustedBy: React.FC = () => {
     if (loading || companies.length === 0) return null;
 
     return (
-        <section className="section-padding-sm bg-gray-50 dark:bg-white/[0.02] border-t border-gray-100 dark:border-white/5 transition-colors duration-300">
+        <section className="section-padding-sm bg-gray-50/50 dark:bg-white/[0.02] backdrop-blur-sm border-t border-gray-100 dark:border-white/5 transition-colors duration-300">
             <div className="container-wide">
                 <div className="text-center mb-12">
                     <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 dark:text-white/40">

@@ -20,15 +20,15 @@ const AdminLayout: React.FC = () => {
     return (
         <div className="flex min-h-screen bg-[#F3F4F6] dark:bg-jawaBlack font-body transition-colors duration-300">
             {/* Sidebar */}
-            <aside className="fixed inset-y-0 left-0 w-72 bg-jawaBlack text-white shadow-2xl border-r border-white/5">
-                <div className="flex h-24 items-center px-8 border-b border-white/10">
+            <aside className="fixed inset-y-0 left-0 w-72 bg-jawaBlack text-white shadow-2xl border-r border-white/5 flex flex-col z-50">
+                <div className="flex h-24 items-center px-8 border-b border-white/10 shrink-0">
                     <div className="flex items-center gap-3">
                         <LogoMark size="md" />
                         <span className="font-display text-xl font-bold tracking-wide">JAWA Admin</span>
                     </div>
                 </div>
 
-                <nav className="mt-8 px-4 space-y-2">
+                <nav className="flex-1 overflow-y-auto py-6 px-4 space-y-2 no-scrollbar hover:scrollbar-thumb-white/20">
                     <Link
                         to="/admin"
                         className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${location.pathname === '/admin'
@@ -51,6 +51,15 @@ const AdminLayout: React.FC = () => {
                             }`}
                     >
                         Services
+                    </Link>
+                    <Link
+                        to="/admin/footer"
+                        className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${isActive('/admin/footer')
+                            ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                            : 'text-white/60 hover:bg-white/5 hover:text-white'
+                            }`}
+                    >
+                        Footer & Contact
                     </Link>
                     <Link
                         to="/admin/portfolio"
@@ -89,6 +98,24 @@ const AdminLayout: React.FC = () => {
                         Équipe
                     </Link>
                     <Link
+                        to="/admin/newsletter"
+                        className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${isActive('/admin/newsletter')
+                            ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                            : 'text-white/60 hover:bg-white/5 hover:text-white'
+                            }`}
+                    >
+                        Newsletter
+                    </Link>
+                    <Link
+                        to="/admin/faq"
+                        className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${isActive('/admin/faq')
+                            ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                            : 'text-white/60 hover:bg-white/5 hover:text-white'
+                            }`}
+                    >
+                        FAQ
+                    </Link>
+                    <Link
                         to="/admin/testimonials"
                         className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${isActive('/admin/testimonials')
                             ? 'bg-primary text-white shadow-lg shadow-primary/25'
@@ -117,10 +144,10 @@ const AdminLayout: React.FC = () => {
                     </Link>
                 </nav>
 
-                <div className="absolute bottom-0 w-full border-t border-white/10 p-4">
+                <div className="border-t border-white/10 bg-white/5 p-4 shrink-0">
                     <button
                         onClick={handleSignOut}
-                        className="flex w-full items-center justify-center gap-2 rounded-xl bg-white/5 py-3 text-sm font-medium text-red-400 transition hover:bg-red-500/10 hover:text-red-300"
+                        className="flex w-full items-center justify-center gap-2 rounded-xl bg-red-500/10 py-3 text-sm font-medium text-red-400 transition hover:bg-red-500/20 hover:text-red-300 border border-red-500/20"
                     >
                         <span>Déconnexion</span>
                     </button>

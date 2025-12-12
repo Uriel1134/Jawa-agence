@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { supabase } from "../supabaseClient";
 
 const Hero: React.FC = () => {
+  const [heroImage, setHeroImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchHeroImage();
+  }, []);
+
+  const fetchHeroImage = async () => {
+    const { data } = await supabase.from("company_info").select("hero_image_url").single();
+    if (data?.hero_image_url) {
+      setHeroImage(data.hero_image_url);
+    } else {
+      setHeroImage("/background.png"); // Fallback if DB is empty
+    }
+  };
+
   return (
     <section
       id="home"
@@ -30,14 +46,8 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-wrap items-center gap-4 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-            <a href="#services" className="btn-primary btn-shimmer">
+            <a href="#services" className="btn-primary-light">
               Découvrir les services
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white transition hover:border-primary hover:bg-primary/10"
-            >
-              Demander un devis
             </a>
           </div>
 
@@ -52,11 +62,17 @@ const Hero: React.FC = () => {
             <div className="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-black/40 shadow-[0_32px_80px_rgba(0,0,0,0.65)] backdrop-blur-lg transition-transform duration-700 hover:scale-[1.02]">
               {/* Image de fond du hero : mets ton visuel dans /public/jawa-hero-visual.jpg */}
               <div className="relative aspect-[4/3] w-full bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.14),_transparent_60%)]">
-                <img
-                  src="/background.png"
-                  alt="JAWA Hero"
-                  className="absolute left-1/2 top-1/2 w-[80%] -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_18px_45px_rgba(0,0,0,0.75)]"
-                />
+                {heroImage ? (
+                  <img
+                    src={heroImage}
+                    alt="JAWA Hero"
+                    className="h-full w-full object-cover transition-opacity duration-500"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+                  </div>
+                )}
               </div>
 
               <div className="flex items-center justify-between px-5 py-4 text-xs text-white/80">

@@ -9,6 +9,8 @@ import Process from "./components/Process";
 import TrustedBy from "./components/TrustedBy";
 import Pricing from "./components/Pricing";
 import Testimonials from "./components/Testimonials";
+import FAQ from "./components/FAQ";
+import Newsletter from "./components/Newsletter";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
@@ -31,12 +33,18 @@ import ContactPage from "./pages/ContactPage";
 import TeamMemberDetails from "./pages/TeamMemberDetails";
 import TeamPage from "./pages/TeamPage";
 import TeamManager from "./pages/admin/TeamManager";
+import NewsletterManager from "./pages/admin/NewsletterManager";
+import FAQManager from "./pages/admin/FAQManager";
+import FooterManager from "./pages/admin/FooterManager";
+
+import ScrollBackground from "./components/ScrollBackground";
 
 const Home: React.FC = () => {
   return (
-    <div className="bg-jawaWhite text-jawaBlack dark:bg-jawaBlack dark:text-white transition-colors duration-300">
+    <div className="bg-transparent text-jawaBlack dark:text-white transition-colors duration-300 relative min-h-screen">
+      <ScrollBackground />
       <Header />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <Services />
         <Portfolio />
@@ -44,6 +52,8 @@ const Home: React.FC = () => {
         <Process />
         <Pricing />
         <Testimonials />
+        <FAQ />
+        <Newsletter />
         <TrustedBy />
         <Contact />
       </main>
@@ -75,9 +85,12 @@ const App: React.FC = () => {
                 <Route path="pricing" element={<PricingManager />} />
                 <Route path="about" element={<AboutManager />} />
                 <Route path="team" element={<TeamManager />} />
+                <Route path="newsletter" element={<NewsletterManager />} />
+                <Route path="faq" element={<FAQManager />} />
                 <Route path="testimonials" element={<TestimonialsManager />} />
                 <Route path="trusted" element={<TrustedManager />} />
                 <Route path="process" element={<ProcessManager />} />
+                <Route path="footer" element={<FooterManager />} />
               </Route>
             </Route>
           </Routes>

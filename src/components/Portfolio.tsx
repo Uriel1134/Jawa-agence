@@ -36,11 +36,11 @@ const Portfolio: React.FC = () => {
   }, []);
 
   return (
-    <section id="portfolio" className="section-padding bg-slate-50 dark:bg-jawaBlack transition-colors duration-300">
+    <section id="portfolio" className="section-padding bg-slate-50/50 dark:bg-jawaBlack/50 backdrop-blur-sm transition-colors duration-300">
       <div className="container-wide">
         <div className="mb-12 flex flex-col items-end justify-between gap-10 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <span className="mb-6 inline-block rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary dark:bg-white/5 dark:border-white/10 dark:text-white">
+            <span className="section-badge mb-6">
               Portfolio
             </span>
             <h2 className="font-display text-5xl font-bold leading-tight text-jawaBlack dark:text-white md:text-6xl lg:text-7xl">
