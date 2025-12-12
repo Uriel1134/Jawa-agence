@@ -73,7 +73,7 @@ const Portfolio: React.FC = () => {
             {projects.map((project) => (
               <article
                 key={project.id}
-                className="group relative overflow-hidden rounded-3xl dark:border dark:border-white/10 shadow-soft transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
+                className="group relative overflow-hidden rounded-3xl shadow-soft transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
                 {/* Image - No Background */}
                 <div className="aspect-[4/3] transition-transform duration-500 group-hover:scale-105">

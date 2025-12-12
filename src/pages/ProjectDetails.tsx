@@ -131,11 +131,11 @@ const ProjectDetails: React.FC = () => {
                     </div>
 
                     {/* Main Image */}
-                    <div className="relative aspect-video w-full overflow-hidden rounded-3xl bg-gray-100 dark:bg-white/5 shadow-2xl mb-16">
+                    <div className="relative aspect-video w-full overflow-hidden rounded-3xl shadow-2xl mb-16">
                         {project.image ? (
                             <img src={project.image} alt={project.title} className="h-full w-full object-cover" />
                         ) : (
-                            <div className="flex h-full items-center justify-center text-gray-300 dark:text-white/20">Aucune image</div>
+                            <div className="flex h-full items-center justify-center text-gray-300 dark:text-white/20 bg-gray-100 dark:bg-white/5">Aucune image</div>
                         )}
                     </div>
 
