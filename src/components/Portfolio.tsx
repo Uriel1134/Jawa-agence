@@ -73,10 +73,10 @@ const Portfolio: React.FC = () => {
             {projects.map((project) => (
               <article
                 key={project.id}
-                className="group relative overflow-hidden rounded-3xl bg-white dark:bg-white/5 dark:border dark:border-white/10 shadow-soft transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
+                className="group relative overflow-hidden rounded-3xl dark:border dark:border-white/10 shadow-soft transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
-                {/* Image Background */}
-                <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 via-white to-jawaBlack/5 transition-transform duration-500 group-hover:scale-105">
+                {/* Image - No Background */}
+                <div className="aspect-[4/3] transition-transform duration-500 group-hover:scale-105">
                   {project.image && (
                     <img
                       src={project.image}

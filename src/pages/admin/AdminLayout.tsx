@@ -80,6 +80,24 @@ const AdminLayout: React.FC = () => {
                         Processus
                     </Link>
                     <Link
+                        to="/admin/team"
+                        className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${isActive('/admin/team')
+                            ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                            : 'text-white/60 hover:bg-white/5 hover:text-white'
+                            }`}
+                    >
+                        Équipe
+                    </Link>
+                    <Link
+                        to="/admin/testimonials"
+                        className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${isActive('/admin/testimonials')
+                            ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                            : 'text-white/60 hover:bg-white/5 hover:text-white'
+                            }`}
+                    >
+                        Témoignages
+                    </Link>
+                    <Link
                         to="/admin/trusted"
                         className={`group flex items-center rounded-xl px-4 py-3.5 text-sm font-medium transition-all duration-200 ${isActive('/admin/trusted')
                             ? 'bg-primary text-white shadow-lg shadow-primary/25'

@@ -39,12 +39,17 @@ module.exports = {
         "slide-in-right": {
           "0%": { opacity: "0", transform: "translateX(50px)" },
           "100%": { opacity: "1", transform: "translateX(0)" }
+        },
+        scroll: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" }
         }
       },
       animation: {
         "fade-in-up": "fade-in-up 0.8s ease-out forwards",
         "slide-in-left": "slide-in-left 0.8s ease-out forwards",
-        "slide-in-right": "slide-in-right 0.8s ease-out forwards"
+        "slide-in-right": "slide-in-right 0.8s ease-out forwards",
+        scroll: "scroll 30s linear infinite"
       }
     }
   },

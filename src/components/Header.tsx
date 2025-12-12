@@ -28,19 +28,19 @@ const Header: React.FC<HeaderProps> = ({ alwaysOpaque = false }) => {
         }`}
     >
       <div className="container-wide flex items-center justify-between py-3">
-        <a href="#home" className="flex items-center gap-2">
+        <a href="/#home" className="flex items-center gap-2">
           <LogoMark size="lg" />
         </a>
 
         <div className="flex items-center gap-6">
           <nav className="hidden items-center gap-8 text-xs font-medium text-white/80 md:flex">
             {['Services', 'Portfolio', 'Process', 'Testimonials', 'Contact'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="group relative py-1 hover:text-white transition-colors">
-                {item === 'Process' ? 'Processus' : item === 'Testimonials' ? 'Témoignages' : item === 'About' ? 'À propos' : item}
+              <a key={item} href={`/#${item.toLowerCase()}`} className="group relative py-1 hover:text-white transition-colors">
+                {item === 'Process' ? 'Processus' : item === 'Testimonials' ? 'Témoignages' : item}
                 <span className="absolute inset-x-0 bottom-0 h-px scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
               </a>
             ))}
-            <a href="#about" className="group relative py-1 hover:text-white transition-colors">
+            <a href="/#about" className="group relative py-1 hover:text-white transition-colors">
               À propos
               <span className="absolute inset-x-0 bottom-0 h-px scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
             </a>
@@ -63,12 +63,12 @@ const Header: React.FC<HeaderProps> = ({ alwaysOpaque = false }) => {
             )}
           </button>
 
-          <a href="#contact" className="hidden md:inline-flex btn-primary btn-shimmer text-xs">
+          <a href="/#contact" className="hidden md:inline-flex btn-primary btn-shimmer text-xs">
             Demander un devis
           </a>
 
           <a
-            href="#contact"
+            href="/#contact"
             className="btn-primary btn-shimmer text-xs md:hidden"
             aria-label="Demander un devis"
           >
@@ -81,3 +81,4 @@ const Header: React.FC<HeaderProps> = ({ alwaysOpaque = false }) => {
 };
 
 export default Header;
+

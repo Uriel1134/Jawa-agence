@@ -33,7 +33,7 @@ const Services: React.FC = () => {
   }, []);
 
   return (
-    <section id="services" className="bg-white dark:bg-jawaBlack py-32 transition-colors duration-300">
+    <section id="services" className="section-padding-lg bg-white dark:bg-jawaBlack transition-colors duration-300">
       <div className="container-wide">
         <div className="mb-24 flex flex-col items-end justify-between gap-10 md:flex-row md:items-end">
           <div className="max-w-2xl">

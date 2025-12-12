@@ -29,26 +29,30 @@ const TrustedBy: React.FC = () => {
     if (loading || companies.length === 0) return null;
 
     return (
-        <section className="py-12 bg-white dark:bg-jawaBlack border-t border-gray-100 dark:border-white/5 transition-colors duration-300">
+        <section className="section-padding-sm bg-gray-50 dark:bg-white/[0.02] border-t border-gray-100 dark:border-white/5 transition-colors duration-300">
             <div className="container-wide">
-                <div className="text-center mb-8">
-                    <p className="text-sm font-bold uppercase tracking-widest text-gray-400 dark:text-white/40">
+                <div className="text-center mb-12">
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 dark:text-white/40">
                         Ils nous font confiance
                     </p>
                 </div>
 
                 <div className="relative w-full overflow-hidden">
-                    <div className="flex w-max animate-scroll gap-12 md:gap-24">
-                        {/* Double the list for seamless infinite scroll */}
-                        {[...companies, ...companies].map((company, index) => (
+                    {/* Gradient overlays */}
+                    <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 dark:from-jawaBlack to-transparent z-10 pointer-events-none"></div>
+                    <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 dark:from-jawaBlack to-transparent z-10 pointer-events-none"></div>
+
+                    <div className="flex w-max animate-scroll gap-16 md:gap-24">
+                        {/* Triple the list for seamless infinite scroll */}
+                        {[...companies, ...companies, ...companies].map((company, index) => (
                             <div
                                 key={`${company.id}-${index}`}
-                                className="flex h-12 w-32 items-center justify-center grayscale opacity-50 transition hover:grayscale-0 hover:opacity-100 dark:invert dark:brightness-200"
+                                className="flex h-16 w-40 items-center justify-center"
                             >
                                 <img
                                     src={company.logo_url}
                                     alt={company.name}
-                                    className="max-h-full max-w-full object-contain"
+                                    className="max-h-full max-w-full object-contain filter grayscale transition hover:grayscale-0"
                                 />
                             </div>
                         ))}

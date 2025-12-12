@@ -20,12 +20,17 @@ import PricingManager from "./pages/admin/PricingManager";
 import AboutManager from "./pages/admin/AboutManager";
 import TrustedManager from "./pages/admin/TrustedManager";
 import ProcessManager from "./pages/admin/ProcessManager";
+import TestimonialsManager from "./pages/admin/TestimonialsManager";
 import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 import ProjectDetails from "./pages/ProjectDetails";
 import ServiceDetails from "./pages/ServiceDetails";
+import ContactPage from "./pages/ContactPage";
+import TeamMemberDetails from "./pages/TeamMemberDetails";
+import TeamPage from "./pages/TeamPage";
+import TeamManager from "./pages/admin/TeamManager";
 
 const Home: React.FC = () => {
   return (
@@ -39,8 +44,8 @@ const Home: React.FC = () => {
         <Process />
         <Pricing />
         <Testimonials />
-        <Contact />
         <TrustedBy />
+        <Contact />
       </main>
       <Footer />
     </div>
@@ -54,6 +59,9 @@ const App: React.FC = () => {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/team" element={<TeamPage />} />
+            <Route path="/team/:id" element={<TeamMemberDetails />} />
             <Route path="/project/:id" element={<ProjectDetails />} />
             <Route path="/service/:id" element={<ServiceDetails />} />
             <Route path="/login" element={<Login />} />
@@ -66,6 +74,8 @@ const App: React.FC = () => {
                 <Route path="portfolio" element={<PortfolioManager />} />
                 <Route path="pricing" element={<PricingManager />} />
                 <Route path="about" element={<AboutManager />} />
+                <Route path="team" element={<TeamManager />} />
+                <Route path="testimonials" element={<TestimonialsManager />} />
                 <Route path="trusted" element={<TrustedManager />} />
                 <Route path="process" element={<ProcessManager />} />
               </Route>

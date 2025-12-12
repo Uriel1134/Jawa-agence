@@ -115,7 +115,7 @@ const Process: React.FC = () => {
   if (steps.length === 0) return null;
 
   return (
-    <section id="process" className="bg-white dark:bg-jawaBlack py-32 overflow-hidden transition-colors duration-300">
+    <section id="process" className="section-padding bg-white dark:bg-jawaBlack overflow-hidden transition-colors duration-300">
       <div className="container-wide">
         {/* Header */}
         <div className="mb-24 flex flex-col items-end justify-between gap-10 md:flex-row md:items-end">

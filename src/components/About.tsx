@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabaseClient";
 
 interface AboutData {
@@ -12,25 +13,48 @@ interface AboutData {
   vision_text: string;
 }
 
+interface TeamMember {
+  id: number;
+  name: string;
+  photo_url?: string;
+}
+
 const About: React.FC = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState<AboutData | null>(null);
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
 
   useEffect(() => {
-    const fetchAboutData = async () => {
-      const { data, error } = await supabase
-        .from('about_section')
-        .select('*')
-        .single();
-
-      if (error) {
-        console.error('Error fetching about data:', error);
-      } else {
-        setData(data);
-      }
-    };
-
     fetchAboutData();
+    fetchTeamMembers();
   }, []);
+
+  const fetchAboutData = async () => {
+    const { data, error } = await supabase
+      .from('about_section')
+      .select('*')
+      .single();
+
+    if (error) {
+      console.error('Error fetching about data:', error);
+    } else {
+      setData(data);
+    }
+  };
+
+  const fetchTeamMembers = async () => {
+    const { data, error } = await supabase
+      .from('team_members')
+      .select('id, name, photo_url')
+      .order('created_at', { ascending: false })
+      .limit(4);
+
+    if (error) {
+      console.error('Error fetching team members:', error);
+    } else {
+      setTeamMembers(data || []);
+    }
+  };
 
   if (!data) return null;
 
@@ -92,7 +116,10 @@ const About: React.FC = () => {
           </div>
 
           {/* Bandeau équipe */}
-          <div className="flex flex-col gap-4 rounded-[2rem] bg-[#FFE04A] dark:bg-white/10 px-8 py-6 shadow-lg shadow-[#FFE04A]/20 dark:shadow-none sm:flex-row sm:items-center sm:justify-between transition-transform duration-300 hover:-translate-y-1">
+          <div
+            onClick={() => navigate('/team')}
+            className="flex flex-col gap-4 rounded-[2rem] bg-[#FFE04A] dark:bg-white/10 px-8 py-6 shadow-lg shadow-[#FFE04A]/20 dark:shadow-none sm:flex-row sm:items-center sm:justify-between transition-transform duration-300 hover:-translate-y-1 cursor-pointer"
+          >
             <div>
               <p className="text-base font-bold text-jawaBlack dark:text-white">
                 Les talents derrière JAWA
@@ -102,15 +129,36 @@ const About: React.FC = () => {
               </p>
             </div>
             <div className="flex -space-x-3">
-              {Array.from({ length: 5 }).map((_, i) => (
+              {teamMembers.slice(0, 3).map((member) => (
                 <div
-                  key={i}
-                  className="h-10 w-10 rounded-full border-2 border-[#FFE04A] dark:border-white/10 bg-jawaBlack/90 shadow-sm"
-                />
+                  key={member.id}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/team/${member.id}`);
+                  }}
+                  className="h-10 w-10 rounded-full border-2 border-[#FFE04A] dark:border-white/10 bg-jawaBlack/90 shadow-sm overflow-hidden cursor-pointer hover:scale-110 transition-transform duration-200"
+                  title={member.name}
+                >
+                  {member.photo_url ? (
+                    <img src={member.photo_url} alt={member.name} className="h-full w-full object-cover" />
+                  ) : (
+                    <div className="h-full w-full flex items-center justify-center text-white text-xs font-bold">
+                      {member.name.charAt(0)}
+                    </div>
+                  )}
+                </div>
               ))}
-              <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#FFE04A] dark:border-white/10 bg-white text-xs font-bold text-jawaBlack">
-                +
-              </div>
+              {teamMembers.length > 3 && (
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate('/team');
+                  }}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#FFE04A] dark:border-white/10 bg-white text-xs font-bold text-jawaBlack cursor-pointer hover:scale-110 transition-transform duration-200"
+                >
+                  +{teamMembers.length - 3}
+                </div>
+              )}
             </div>
           </div>
         </div>

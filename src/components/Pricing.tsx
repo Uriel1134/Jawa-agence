@@ -46,7 +46,7 @@ const Pricing: React.FC = () => {
     const filteredPlans = plans.filter(plan => plan.category === activeCategory);
 
     return (
-        <section id="pricing" className="bg-slate-50 dark:bg-jawaBlack py-32 transition-colors duration-300">
+        <section id="pricing" className="section-padding bg-slate-50 dark:bg-jawaBlack transition-colors duration-300">
             <div className="container-wide">
                 {/* Header */}
                 <div className="mb-20 flex flex-col items-center text-center">
@@ -131,15 +131,27 @@ const Pricing: React.FC = () => {
                                     ))}
                                 </ul>
 
-                                <a
-                                    href={plan.button_link}
-                                    className={`block w-full rounded-xl py-4 text-center text-xs font-bold uppercase tracking-widest transition-all ${plan.is_popular
-                                        ? 'bg-primary text-white hover:bg-white hover:text-primary dark:bg-white dark:text-primary dark:hover:bg-white/90'
-                                        : 'bg-jawaBlack text-white hover:bg-primary hover:text-white dark:bg-white/10 dark:hover:bg-primary'
-                                        }`}
-                                >
-                                    {plan.button_text}
-                                </a>
+                                {plan.button_link && plan.button_link.trim() !== '' ? (
+                                    <a
+                                        href={plan.button_link}
+                                        className={`block w-full rounded-xl py-4 text-center text-xs font-bold uppercase tracking-widest transition-all ${plan.is_popular
+                                            ? 'bg-primary text-white hover:bg-white hover:text-primary dark:bg-white dark:text-primary dark:hover:bg-white/90'
+                                            : 'bg-jawaBlack text-white hover:bg-primary hover:text-white dark:bg-white/10 dark:hover:bg-primary'
+                                            }`}
+                                    >
+                                        {plan.button_text}
+                                    </a>
+                                ) : (
+                                    <a
+                                        href="/contact"
+                                        className={`block w-full rounded-xl py-4 text-center text-xs font-bold uppercase tracking-widest transition-all ${plan.is_popular
+                                            ? 'bg-primary text-white hover:bg-white hover:text-primary dark:bg-white dark:text-primary dark:hover:bg-white/90'
+                                            : 'bg-jawaBlack text-white hover:bg-primary hover:text-white dark:bg-white/10 dark:hover:bg-primary'
+                                            }`}
+                                    >
+                                        {plan.button_text}
+                                    </a>
+                                )}
                             </div>
                         ))}
                     </div>
