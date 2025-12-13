@@ -117,7 +117,9 @@ const Footer: React.FC = () => {
                   </a>
                 </li>
                 <li>
-                  <span className="cursor-default text-white/30">Blog &amp; Article</span>
+                  <a href="/blog" className="hover:text-primary transition-colors">
+                    Blog &amp; Actualités
+                  </a>
                 </li>
               </ul>
             </div>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { supabase } from "../supabaseClient";
 import SectionHeader from "./SectionHeader";
 
 const Contact: React.FC = () => {
@@ -11,6 +12,25 @@ const Contact: React.FC = () => {
     budget: '',
     message: ''
   });
+
+  const [footerData, setFooterData] = useState<{ email: string } | null>(null);
+
+  useEffect(() => {
+    const fetchFooterData = async () => {
+      const { data, error } = await supabase
+        .from('company_info')
+        .select('email')
+        .single();
+
+      if (error) {
+        console.error('Error fetching company info:', error);
+      } else {
+        setFooterData(data);
+      }
+    };
+
+    fetchFooterData();
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,72 +47,41 @@ const Contact: React.FC = () => {
         <div className="mb-20">
           <SectionHeader
             number="09."
-            title="Parlons de votre prochain projet"
+            title="Prêt à surclasser la concurrence ?"
             backgroundTitle="CONTACT"
-            description="Partagez votre vision, nous la transformerons en réalité digitale"
+            description="Votre vision mérite une exécution parfaite. Dites-nous où vous voulez aller, nous tracerons la route."
             align="left"
             className="mb-0"
           />
         </div>
 
         {/* Main Content */}
-        <div className="grid lg:grid-cols-[1fr,1.3fr] gap-12 lg:gap-16">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left - Contact Info */}
-          <div className="space-y-6">
-            {/* Quick Contact */}
-            <div className="space-y-4">
-              {/* Email */}
-              <a
-                href="mailto:contact@jawa-agence.tech"
-                className="group flex items-center gap-4 p-6 rounded-2xl border border-gray-200 dark:border-white/10 hover:border-primary dark:hover:border-primary bg-white dark:bg-white/[0.02] transition-all"
-              >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all flex-shrink-0">
-                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/60 mb-1">Email</p>
-                  <p className="text-base font-bold text-jawaBlack dark:text-white">contact@jawa-agence.tech</p>
-                </div>
-              </a>
-
-              {/* Phone */}
-              <div className="flex items-center gap-4 p-6 rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/[0.02]">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-white/60 flex-shrink-0">
-                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/60 mb-1">Téléphone</p>
-                  <p className="text-base font-bold text-jawaBlack dark:text-white">+229 01 XX XX XX XX</p>
-                </div>
+          <div className="flex flex-col gap-6">
+            {/* Email */}
+            <a
+              href={`mailto:${footerData?.email || 'contact@jawa-agence.tech'}`}
+              className="group flex items-center gap-4 p-6 rounded-2xl border border-gray-200 dark:border-white/10 hover:border-primary dark:hover:border-primary bg-white dark:bg-white/[0.02] transition-all"
+            >
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all flex-shrink-0">
+                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
               </div>
-
-              {/* Location */}
-              <div className="flex items-center gap-4 p-6 rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/[0.02]">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-white/60 flex-shrink-0">
-                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/60 mb-1">Localisation</p>
-                  <p className="text-base font-bold text-jawaBlack dark:text-white">Cotonou, Bénin</p>
-                  <p className="text-sm text-gray-500 dark:text-white/60 mt-1">Lun – Ven · 9h – 18h30</p>
-                </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/60 mb-1">Email</p>
+                <p className="text-base font-bold text-jawaBlack dark:text-white">{footerData?.email || 'contact@jawa-agence.tech'}</p>
               </div>
-            </div>
+            </a>
 
             {/* Google Map */}
-            <div className="rounded-2xl border border-gray-200 dark:border-white/10 overflow-hidden h-[300px]">
+            <div className="rounded-2xl border border-gray-200 dark:border-white/10 overflow-hidden flex-1">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126182.77764357384!2d2.3508946!3d6.3702928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1024a9a3001d66e3%3A0xd8b0a9f7e0e5d0d0!2sCotonou%2C%20Benin!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
                 width="100%"
                 height="100%"
-                style={{ border: 0 }}
+                style={{ border: 0, minHeight: '450px' }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -229,7 +218,7 @@ const Contact: React.FC = () => {
                 type="submit"
                 className="btn-primary w-full"
               >
-                Envoyer le message
+                Lancer la transformation
               </button>
             </form>
           </div>

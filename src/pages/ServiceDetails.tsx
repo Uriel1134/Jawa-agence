@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import StructuredData from '../components/StructuredData';
 
 interface Service {
     id: number;
@@ -85,6 +86,7 @@ const ServiceDetails: React.FC = () => {
 
     return (
         <div className="bg-white dark:bg-jawaBlack transition-colors duration-300 min-h-screen">
+            {service && <StructuredData type="service" data={service} />}
             <Header alwaysOpaque />
             <main className="pt-32 pb-20">
                 <div className="container-wide">

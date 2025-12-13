@@ -57,22 +57,25 @@ const Pricing: React.FC = () => {
                     className="mb-16"
                 />
 
-                {/* Tabs */}
+                {/* Tabs - Mobile Responsive */}
                 {categories.length > 0 && (
-                    <div className="mb-16 flex justify-center">
-                        <div className="inline-flex rounded-full bg-white dark:bg-white/5 p-1.5 shadow-sm border border-gray-100 dark:border-white/10">
-                            {categories.map((category) => (
-                                <button
-                                    key={category}
-                                    onClick={() => setActiveCategory(category)}
-                                    className={`rounded-full px-6 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 ${activeCategory === category
-                                        ? 'bg-primary text-white shadow-md'
-                                        : 'text-gray-500 hover:text-jawaBlack dark:text-white/60 dark:hover:text-white'
-                                        }`}
-                                >
-                                    {category}
-                                </button>
-                            ))}
+                    <div className="mb-12 sm:mb-16">
+                        {/* Mobile: Horizontal scroll, Desktop: Centered */}
+                        <div className="flex justify-start sm:justify-center overflow-x-auto pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
+                            <div className="inline-flex gap-2 sm:gap-0 rounded-full bg-white dark:bg-white/5 p-1 sm:p-1.5 shadow-sm border border-gray-100 dark:border-white/10 min-w-max">
+                                {categories.map((category) => (
+                                    <button
+                                        key={category}
+                                        onClick={() => setActiveCategory(category)}
+                                        className={`whitespace-nowrap rounded-full px-4 sm:px-6 py-2 sm:py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 ${activeCategory === category
+                                                ? 'bg-primary text-white shadow-md'
+                                                : 'text-gray-500 hover:text-jawaBlack dark:text-white/60 dark:hover:text-white'
+                                            }`}
+                                    >
+                                        {category}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 )}

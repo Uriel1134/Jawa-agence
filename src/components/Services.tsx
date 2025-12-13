@@ -39,7 +39,7 @@ const Services: React.FC = () => {
         <SectionHeader
           number="01."
           title="Services"
-          description="Nous combinons stratégie, design et technologie pour créer des produits digitaux qui marquent les esprits et accélèrent votre croissance."
+          description="Chaque service est une brique stratégique pour solidifier votre présence et accélérer votre chiffre d'affaires. Choisissez l'excellence."
           align="right"
         />
 

@@ -37,12 +37,18 @@ import NewsletterManager from "./pages/admin/NewsletterManager";
 import FAQManager from "./pages/admin/FAQManager";
 import FooterManager from "./pages/admin/FooterManager";
 import ProjectsPage from "./pages/ProjectsPage";
+import BlogPage from "./pages/BlogPage";
+import BlogPost from "./pages/BlogPost";
+import BlogManager from "./pages/admin/BlogManager";
+import BlogEditor from "./pages/admin/BlogEditor";
 
 import ScrollBackground from "./components/ScrollBackground";
+import StructuredData from "./components/StructuredData";
 
 const Home: React.FC = () => {
   return (
     <div className="bg-transparent text-jawaBlack dark:text-white transition-colors duration-300 relative min-h-screen">
+      <StructuredData type="website" />
       <ScrollBackground />
       <Header />
       <main className="relative z-10">
@@ -74,8 +80,12 @@ const App: React.FC = () => {
             <Route path="/team" element={<TeamPage />} />
             <Route path="/team/:id" element={<TeamMemberDetails />} />
             <Route path="/project/:id" element={<ProjectDetails />} />
+            <Route path="/project/:id" element={<ProjectDetails />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/service/:id" element={<ServiceDetails />} />
+            <Route path="/service/:id" element={<ServiceDetails />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/login" element={<Login />} />
 
             {/* Routes Admin Protégées */}
@@ -92,7 +102,11 @@ const App: React.FC = () => {
                 <Route path="testimonials" element={<TestimonialsManager />} />
                 <Route path="trusted" element={<TrustedManager />} />
                 <Route path="process" element={<ProcessManager />} />
+                <Route path="process" element={<ProcessManager />} />
                 <Route path="footer" element={<FooterManager />} />
+                <Route path="blog" element={<BlogManager />} />
+                <Route path="blog/new" element={<BlogEditor />} />
+                <Route path="blog/edit/:id" element={<BlogEditor />} />
               </Route>
             </Route>
           </Routes>

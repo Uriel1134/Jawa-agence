@@ -161,7 +161,7 @@ const Portfolio: React.FC = () => {
                       )}
 
                       <Link
-                        to={`/ project / ${project.id} `}
+                        to={`/project/${project.id}`}
                         className="group/btn mt-4 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-white backdrop-blur-sm transition-all hover:bg-white hover:text-jawaBlack focus:outline-none focus:ring-2 focus:ring-white/50 before:absolute before:inset-0 before:z-0"
                       >
                         Voir le détail

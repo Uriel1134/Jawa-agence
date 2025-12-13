@@ -14,6 +14,14 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
   }
 
   body {
@@ -318,14 +326,28 @@
   /* Firefox */
 }
 
+/* Hide scrollbar but keep scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari and Opera */
+}
+
+
 /* Text Stroke Utility */
 .stroke-text {
-  -webkit-text-stroke: 2px rgba(0, 0, 0, 0.6);
-  /* Much higher contrast for light mode */
+  -webkit-text-stroke: 2.5px rgba(0, 0, 0, 0.8);
+  /* Maximum contrast for light mode - highly visible */
   color: transparent;
 }
 
 .dark .stroke-text {
-  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.6);
-  /* Much higher contrast for dark mode */
+  -webkit-text-stroke: 2.5px rgba(255, 255, 255, 0.8);
+  /* Maximum contrast for dark mode - highly visible */
 }

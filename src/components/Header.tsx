@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import LogoMark from "./LogoMark";
 import { useTheme } from "../context/ThemeContext";
 
@@ -9,6 +10,8 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ alwaysOpaque = false }) => {
   const [onLightSection, setOnLightSection] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +23,49 @@ const Header: React.FC<HeaderProps> = ({ alwaysOpaque = false }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Handle scrolling to hash on location change
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      // Wait for DOM to be ready, try multiple times
+      const scrollToElement = () => {
+        const element = document.getElementById(id);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        }
+      };
+
+      // Try immediately
+      scrollToElement();
+      // Try again after delays to ensure page is loaded
+      const timer1 = setTimeout(scrollToElement, 200);
+      const timer2 = setTimeout(scrollToElement, 500);
+
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+      };
+    }
+  }, [location]);
+
+  // Handle navigation to sections
+  const handleSectionClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+
+    if (location.pathname !== '/') {
+      // Navigate to homepage with hash
+      navigate(`/#${sectionId}`);
+    } else {
+      // Already on homepage, just scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-30 transition-colors duration-300 ${alwaysOpaque || onLightSection
@@ -28,19 +74,39 @@ const Header: React.FC<HeaderProps> = ({ alwaysOpaque = false }) => {
         }`}
     >
       <div className="container-wide flex items-center justify-between py-3">
-        <a href="/#home" className="flex items-center gap-2">
+        <a
+          href="/#home"
+          onClick={(e) => handleSectionClick(e, 'home')}
+          className="flex items-center gap-2"
+        >
           <LogoMark size="lg" />
         </a>
 
         <div className="flex items-center gap-6">
           <nav className="hidden items-center gap-8 text-xs font-medium text-white/80 md:flex">
-            {['Services', 'Portfolio', 'Process', 'Testimonials', 'Contact'].map((item) => (
-              <a key={item} href={`/#${item.toLowerCase()}`} className="group relative py-1 hover:text-white transition-colors">
+            {['Services', 'Portfolio', 'Process', 'Testimonials'].map((item) => (
+              <a
+                key={item}
+                href={`/#${item.toLowerCase()}`}
+                onClick={(e) => handleSectionClick(e, item.toLowerCase())}
+                className="group relative py-1 hover:text-white transition-colors"
+              >
                 {item === 'Process' ? 'Processus' : item === 'Testimonials' ? 'Témoignages' : item}
                 <span className="absolute inset-x-0 bottom-0 h-px scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
               </a>
             ))}
-            <a href="/#about" className="group relative py-1 hover:text-white transition-colors">
+            <a
+              href="/blog"
+              className="group relative py-1 hover:text-white transition-colors"
+            >
+              Blog
+              <span className="absolute inset-x-0 bottom-0 h-px scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
+            </a>
+            <a
+              href="/#about"
+              onClick={(e) => handleSectionClick(e, 'about')}
+              className="group relative py-1 hover:text-white transition-colors"
+            >
               À propos
               <span className="absolute inset-x-0 bottom-0 h-px scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
             </a>
@@ -63,12 +129,17 @@ const Header: React.FC<HeaderProps> = ({ alwaysOpaque = false }) => {
             )}
           </button>
 
-          <a href="/#contact" className="hidden md:inline-flex btn-primary-light text-xs">
+          <a
+            href="/#contact"
+            onClick={(e) => handleSectionClick(e, 'contact')}
+            className="hidden md:inline-flex btn-primary-light text-xs"
+          >
             Demander un devis
           </a>
 
           <a
             href="/#contact"
+            onClick={(e) => handleSectionClick(e, 'contact')}
             className="btn-primary-light text-xs md:hidden"
             aria-label="Demander un devis"
           >

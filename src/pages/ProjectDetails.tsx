@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import StructuredData from '../components/StructuredData';
 
 interface Project {
     id: number;
@@ -61,6 +62,7 @@ const ProjectDetails: React.FC = () => {
 
     return (
         <div className="bg-white dark:bg-jawaBlack transition-colors duration-300 min-h-screen">
+            {project && <StructuredData type="article" data={project} />}
             <Header alwaysOpaque />
 
             <main className="pt-32 pb-20">

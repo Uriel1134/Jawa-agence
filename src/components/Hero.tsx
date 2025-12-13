@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
+import { Link } from "react-router-dom";
 
 const Hero: React.FC = () => {
   const [heroImage, setHeroImage] = useState<string | null>(null);
@@ -34,21 +35,25 @@ const Hero: React.FC = () => {
         {/* Colonne gauche : contenu texte */}
         <div className="space-y-8">
           <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-display leading-tight animate-fade-in-up">
-            Satisfaire vos besoins{" "}
-            <span className="block text-primary">et booster votre image</span>
+            Transformez votre vision en{" "}
+            <span className="block text-primary">empire digital.</span>
           </h1>
 
           <p className="max-w-xl text-[0.97rem] text-white/80 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
             <span className="font-brand tracking-[0.28em] uppercase">JAWA</span>{" "}
-            accompagne les marques ambitieuses dans la création
-            d&apos;expériences numériques haut de gamme : sites web, apps
-            mobiles, UI/UX et identités de marque pensées pour la performance.
+            ne crée pas simplement des sites. Nous bâtissons des écosystèmes numériques sur mesure qui <span className="text-white font-medium">captivent votre audience</span> et <span className="text-white font-medium">multiplient votre chiffre d'affaires</span>.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-            <a href="#services" className="btn-primary-light">
-              Découvrir les services
+            <a href="#contact" className="btn-primary-light">
+              Discuter de mon projet
             </a>
+            <Link to="/projects" className="group flex items-center gap-2 px-6 py-3 text-sm font-bold text-white transition-opacity hover:opacity-80">
+              Voir nos réalisations
+              <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
 
         </div>
