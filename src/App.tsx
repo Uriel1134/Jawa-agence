@@ -41,6 +41,7 @@ import BlogPage from "./pages/BlogPage";
 import BlogPost from "./pages/BlogPost";
 import BlogManager from "./pages/admin/BlogManager";
 import BlogEditor from "./pages/admin/BlogEditor";
+import CommentsManager from "./pages/admin/CommentsManager";
 
 import ScrollBackground from "./components/ScrollBackground";
 import StructuredData from "./components/StructuredData";
@@ -107,6 +108,7 @@ const App: React.FC = () => {
                 <Route path="blog" element={<BlogManager />} />
                 <Route path="blog/new" element={<BlogEditor />} />
                 <Route path="blog/edit/:id" element={<BlogEditor />} />
+                <Route path="comments" element={<CommentsManager />} />
               </Route>
             </Route>
           </Routes>

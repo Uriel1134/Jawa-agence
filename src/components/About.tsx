@@ -165,13 +165,14 @@ const About: React.FC = () => {
         </div>
 
         {/* Colonne droite : contenu */}
-        <div className="space-y-10 lg:pt-8">
+        <div className="space-y-4 lg:pt-8">
           <SectionHeader
             number="03."
             title={data.intro_title}
             backgroundTitle="JAWA"
             description={data.intro_text}
             align="left"
+            className="!mb-4"
           />
 
           <div className="space-y-4">

@@ -86,10 +86,10 @@ const Testimonials: React.FC = () => {
 
     const { error } = await supabase
       .from('testimonials')
-      .insert([{ ...formData, avatar_url: avatarUrl, approved: false }]);
+      .insert([{ ...formData, avatar_url: avatarUrl, approved: true }]);
 
     if (!error) {
-      alert('Merci ! Votre témoignage a été soumis et sera affiché après validation.');
+      alert('Merci ! Votre témoignage a été publié.');
       setFormData({ quote: '', name: '', role: '', company: '', email: '' });
       setSelectedFile(null);
       setShowForm(false);
@@ -109,6 +109,7 @@ const Testimonials: React.FC = () => {
           <SectionHeader
             number="06."
             title="Avis Clients"
+            backgroundTitle="AVIS"
             description="Nous concevons des expériences digitales qui marquent, et nos clients partagent ici leurs retours sur les projets menés avec JAWA."
             align="left"
           />

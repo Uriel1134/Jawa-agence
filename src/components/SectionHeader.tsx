@@ -27,16 +27,50 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
     return (
         <div className={`relative flex flex-col ${alignClasses[align]} mb-16 md:mb-24 ${className}`}>
 
-            {/* Outline Text Background */}
+            {/* Outline Text Background with Rolling Chain Animation */}
             <div
-                className="absolute -top-6 md:-top-16 opacity-10 pointer-events-none select-none w-full"
+                className="absolute -top-8 md:-top-20 opacity-80 pointer-events-none select-none w-full overflow-visible z-0"
                 aria-hidden="true"
             >
-                <span
-                    className="font-display font-bold text-[5rem] md:text-[8rem] lg:text-[10rem] leading-none text-transparent stroke-text"
+                <svg
+                    className="w-full h-[120px] md:h-[200px]"
+                    viewBox="0 0 1000 200"
+                    preserveAspectRatio={align === 'center' ? "xMidYMid meet" : align === 'right' ? "xMaxYMid meet" : "xMinYMid meet"}
                 >
-                    {backgroundTitle || title}
-                </span>
+                    <defs>
+                        <linearGradient id={`${backgroundTitle || title}-gradient`} x1="0%" y1="0%" x2="200%" y2="0%">
+                            {/* Base: Faint Blueish Gray */}
+                            <stop offset="0%" stopColor="rgba(200,200,220,0.15)" />
+
+                            {/* Light Beam Start */}
+                            <stop offset="40%" stopColor="rgba(200,200,220,0.15)" />
+
+                            {/* The Light: Bright Cyan/Blue */}
+                            <stop offset="50%" stopColor="#60a5fa" />
+
+                            {/* Light Beam End */}
+                            <stop offset="60%" stopColor="rgba(200,200,220,0.15)" />
+
+                            {/* Base Cont. */}
+                            <stop offset="100%" stopColor="rgba(200,200,220,0.15)" />
+
+                            <animate attributeName="x1" from="-100%" to="100%" dur="3s" repeatCount="indefinite" />
+                            <animate attributeName="x2" from="100%" to="300%" dur="3s" repeatCount="indefinite" />
+                        </linearGradient>
+                    </defs>
+                    <text
+                        x={align === 'center' ? "50%" : align === 'right' ? "100%" : "0"}
+                        y="50%"
+                        dy=".35em"
+                        textAnchor={align === 'center' ? "middle" : align === 'right' ? "end" : "start"}
+                        className="font-display font-bold text-[6rem] md:text-[9rem] lg:text-[11rem] uppercase tracking-tighter"
+                        fill="none"
+                        stroke={`url(#${backgroundTitle || title}-gradient)`}
+                        strokeWidth="2"
+                    >
+                        {backgroundTitle || title}
+                    </text>
+                </svg>
             </div>
 
             {/* Foreground Content */}
